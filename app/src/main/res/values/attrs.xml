@@ -64,4 +64,16 @@
             <flag name="end" value="0x00800005" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="TrendView">
+        <attr name="fromColor" format="color" />
+        <attr name="toColor" format="color" />
+        <attr name="imaginaryHColor" format="color" />
+        <attr name="imaginaryVColor" format="color" />
+        <attr name="lineColor" format="color" />
+        <attr name="textColor" format="color" />
+        <attr name="circleColor" format="color" />
+        <attr name="textSize" format="dimension" />
+    </declare-styleable>
+
 </resources>

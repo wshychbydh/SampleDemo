@@ -8,16 +8,16 @@
     tools:context="com.cool.eye.func.MainActivity">
 
     <com.cool.eye.func.view.ZoneView
-        app:head_drawable="@drawable/st94"
-        app:phone_head_padding="6dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:head_drawable="@drawable/st94"
+        app:phone_head_padding="6dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toPermission"
-        android:text="获取存储权限"
+        android:text="动态获取权限"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -27,7 +27,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toAddress"
-        android:text="选择地址"
+        android:text="地址选择器"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTrendView"
+        android:text="走势图"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
