@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.cool.eye.func.R;
 import com.cool.eye.func.address.mvp.view.AddressActivity;
+import com.cool.eye.func.notify.util.Util;
 
 public class NotifyActivity extends AppCompatActivity implements MyMessage {
 
@@ -51,6 +52,7 @@ public class NotifyActivity extends AppCompatActivity implements MyMessage {
     public void comeQQmessage() {
         Toast.makeText(this,"回调中，收到QQ消息",Toast.LENGTH_SHORT).show();
         Log.d("AAA", "====回调中，收到QQ消息===");
+        Util.startAlarm(this);
     }
 
     @Override

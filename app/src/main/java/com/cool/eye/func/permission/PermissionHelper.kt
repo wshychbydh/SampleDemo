@@ -117,8 +117,8 @@ class PermissionHelper private constructor(private var context: Context) {
             val permissionHelper = PermissionHelper(context)
             permissionHelper.permissions = permissions
             permissionHelper.callback = callback
-            permissionHelper.rationale = rationale
-            permissionHelper.rationaleSetting = rationaleSetting
+            permissionHelper.rationale = rationale ?: DefaultRationale()
+            permissionHelper.rationaleSetting = rationaleSetting ?: SettingRationale()
             return permissionHelper
         }
     }

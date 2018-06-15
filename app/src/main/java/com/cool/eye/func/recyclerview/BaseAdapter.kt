@@ -1,4 +1,4 @@
-package com.cool.eye.func.address
+package com.cool.eye.func.recyclerview
 
 import android.support.v7.widget.RecyclerView
 import android.util.SparseArray
@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import java.util.*
 
 /**
- * Created by cool on 18/4/18.
+ * Created by cool on 18/6/14.
  */
-class RecyclerAdapter : RecyclerView.Adapter<DataViewHolder<Any>>() {
+abstract class BaseAdapter : RecyclerView.Adapter<DataViewHolder<Any>>() {
 
     private val viewHolder = SparseArray<Class<out DataViewHolder<*>>>()
-    private val data = ArrayList<Any>()
+    protected val data = ArrayList<Any>()
     private var inflater: LayoutInflater? = null
 
     override fun getItemCount(): Int {
@@ -25,9 +25,10 @@ class RecyclerAdapter : RecyclerView.Adapter<DataViewHolder<Any>>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder<Any> {
+
         val clazz = viewHolder.get(viewType)
-        val layoutId = clazz.getAnnotation(LayoutId::class.java)
-                ?: throw IllegalArgumentException(clazz.simpleName + "must be has @LayoutId annotation!")
+        val layoutId = clazz?.getAnnotation(LayoutId::class.java)
+                ?: throw IllegalArgumentException(clazz?.simpleName + "must be has @LayoutId " + "annotation!")
 
         if (inflater == null) {
             inflater = LayoutInflater.from(parent.context.applicationContext)
@@ -58,34 +59,42 @@ class RecyclerAdapter : RecyclerView.Adapter<DataViewHolder<Any>>() {
         viewHolder.put(dataClazz.name.hashCode(), clazz)
     }
 
-    fun appendData(data: List<String>?) {
-        if (data != null) {
+    open fun appendData(data: List<Any>?) {
+        if (data != null && data.isNotEmpty()) {
             this.data.addAll(data)
         }
-        notifyDataSetChanged()
+        notifyData()
     }
 
-    fun appendData(data: Any?) {
+    open fun appendData(data: Any?) {
         if (data != null) {
             this.data.add(data)
         }
-        notifyDataSetChanged()
+        notifyData()
     }
 
-    fun updateData(data: List<Any>?) {
+    open fun updateData(data: List<Any>?) {
         this.data.clear()
-        if (data != null) {
+        if (data != null && data.isNotEmpty()) {
             this.data.addAll(data)
         }
-        notifyDataSetChanged()
+        notifyData()
     }
 
-    fun updateData(data: Any?) {
+    open fun updateData(data: Any?) {
         this.data.clear()
         if (null != data) {
             this.data.add(data)
         }
+        notifyData()
+    }
+
+    open fun notifyData() {
         notifyDataSetChanged()
+    }
+
+    open fun isLastPosition(position: Int): Boolean {
+        return position == itemCount - 1
     }
 
     val lastData: Any?

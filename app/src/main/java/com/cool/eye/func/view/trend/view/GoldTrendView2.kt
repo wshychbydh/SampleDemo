@@ -10,16 +10,15 @@ import com.cool.eye.func.R
 import com.cool.eye.func.view.trend.mode.GoldNode
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * Created by cool on 2018/3/28.
  */
-class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class GoldTrendView2(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private val nodes: ArrayList<GoldNode> = arrayListOf()
-    private val coordY: ArrayList<String> = arrayListOf()
-    private val coordX: ArrayList<Coord> = arrayListOf()
+    private var nodes: List<GoldNode>? = null
+    private lateinit var coordY: Array<String?>
+    private lateinit var coordXArray: Array<Coord?>
 
     private var viewWidth = 0
     //  private var viewHeight = 0
@@ -42,8 +41,8 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
 
     private var linearGradient: LinearGradient? = null
     // private var pathEffect = CornerPathEffect(CORNER)
-    private var pointEffect: CornerPathEffect
-    private val xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
+    private var pointEffect : CornerPathEffect
+    private var xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
     private val bgRectF = RectF()
     private val textRectF = RectF()
 
@@ -73,18 +72,18 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
         get() = minHeight - cellHeight
 
     private val startX: Float
-        get() = coordX[0].x + coordX[0].width / 2
+        get() = coordXArray[0]!!.x + coordXArray[0]!!.width / 2
 
     private val coordYPadding: Float
         get() = 1f
 
-    private var minWidth: Int = 0
-    private var minHeight: Int = 0
-    private var cellMinWidth: Int = 0
+    private var minWidth:Int = 0
+    private var minHeight:Int = 0
+    private var cellMinWidth:Int = 0
     //  private var cellMinHeight:Int = 0
-    private var pointTextWidth: Int = 0
-    private var pointTextHeight: Int = 0
-    private var pointPadding: Int = 0
+    private var pointTextWidth:Int = 0
+    private var pointTextHeight:Int = 0
+    private var pointPadding:Int = 0
 
     init {
         val density = resources.displayMetrics.density
@@ -96,7 +95,7 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
         pointTextHeight = (POINT_TEXT_HEIGHT * density).toInt()
         pointPadding = (POINT_PADDING * density).toInt()
 
-        pointEffect = CornerPathEffect(pointTextHeight / 2f)
+        pointEffect  = CornerPathEffect(pointTextHeight / 2f)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TrendView)
         circleColor = typedArray.getColor(R.styleable.TrendView_circleColor, Color.RED)
@@ -141,22 +140,34 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
     }
 
     fun setData(data: List<GoldNode>) {
-        this.nodes.clear()
-        this.nodes.addAll(data)
-        calculateAsync()
+        this.nodes = data
+        //FIXME run on AsyncThread
+        reCalculate()
+        //run on ui thread
+        invalidate()
     }
 
-    private fun calculateAsync() {
-        Thread({
-            reCalculate()
-            postInvalidate()
-        }).start()
+    private fun getCoordX(nodes: List<GoldNode>): Array<String?> {
+        val size = nodes.size
+        val coordX = arrayOfNulls<String>(size)
+        for (i in 0 until size) {
+            coordX[i] = format(nodes[i].valueX)
+        }
+        return coordX
     }
 
-    private fun getMinAndMaxPrice(): DoubleArray {
+    private fun format(ms: Long): String {
+        val format2 = SimpleDateFormat("MM-dd")
+        return format2.format(Date(ms))
+    }
+
+    private var scaleUnit: Int = 1  // 每个刻度的值
+
+    private fun reCalculate() {
+
         var minPrice = Double.MAX_VALUE
         var maxPrice = 0.0
-        nodes.forEach {
+        nodes!!.forEach {
             if (it.valueY > maxPrice) {
                 maxPrice = it.valueY
             }
@@ -168,68 +179,71 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
         minPrice -= MAX_EXPEND
         maxPrice += MAX_EXPEND
 
-        return doubleArrayOf(minPrice, maxPrice)
-    }
-
-    private fun fillCoord(minPrice: Int, scaleUnit: Int) {
-        coordY.clear()
-        var coordYWidth = 0f
-        for (i in 0 until MAX_SCALE + 1) {
-            val text = (minPrice + i * scaleUnit).toString()
-            coordY.add(text)
-            coordYWidth = Math.max(coordYWidth, textPaint.measureText(text))
+        val showMinPrice = minPrice.toInt()
+        scaleUnit = (Math.round(maxPrice - minPrice) / MAX_SCALE).toInt()
+        coordY = arrayOfNulls(MAX_SCALE + 1)
+        for (i in  0 until MAX_SCALE + 1) {
+            coordY[i] = (showMinPrice + i * scaleUnit).toString()
         }
 
-        val size = nodes.size
-        coordX.clear()
+        var coordWidth = 0f
+
+        coordY.forEach {
+            coordWidth = Math.max(coordWidth, textPaint.measureText(it))
+        }
+
+        val coordX = getCoordX(nodes!!)
+
+        viewWidth = Math.max(minWidth, (coordX.size + 1) * cellMinWidth)
+        //  viewHeight = MIN_HEIGHT
+        //  viewHeight = Math.max(MIN_HEIGHT, (coordY.size + 2) * CELL_MIN_HEIGHT)
+        cellHeight = (getTrendViewHeight() / (coordY.size + 1)).toFloat()
+
+        coordY.forEachIndexed { index, _ ->
+            val height = startY + coordYPadding - index * cellHeight
+            imaginaryHPath.moveTo(0f, height)
+            imaginaryHPath.lineTo(viewWidth.toFloat(), height)
+        }
+
+        coordXArray = arrayOfNulls(coordX.size)
         var countCoordWidth = 0f
-        for (i in 0 until size) {
-            val value = format(nodes[i].valueX)
-            val width = textPaint.measureText(value)
+        coordX.forEachIndexed { index, it ->
+            val width = textPaint.measureText(it)
             val coord = Coord()
-            coord.value = value
+            coord.value = it!!
             coord.width = width
-            coordX.add(coord)
+            coordXArray[index] = coord
             countCoordWidth += width
         }
-        cellHeight = (getTrendViewHeight() / (coordY.size + 1)).toFloat()
-        viewWidth = Math.max(minWidth, (coordX.size + 1) * cellMinWidth)
-        val spaceWidth = (viewWidth - coordYWidth - countCoordWidth) / size / 2f
-        var leftPadding = coordYWidth
+        val spaceWidth = (viewWidth - coordWidth - countCoordWidth) / coordX.size / 2f
+        var leftPadding = coordWidth
         val bottomPadding = minHeight - cellHeight + coordHeight
-        coordX.forEach { coord ->
-            coord.leftSpace = spaceWidth
+        coordXArray.forEach { coord ->
+            coord!!.leftSpace = spaceWidth
             coord.rightSpace = spaceWidth
             coord.x = leftPadding + spaceWidth
             coord.y = bottomPadding
             leftPadding += coord.getFullWidth()
         }
 
-        unitX = viewWidth - textPaint.measureText(UNIT) - coordYWidth
+        unitX = viewWidth - textPaint.measureText(UNIT) - coordWidth
         unitY = (cellHeight + coordHeight) / 2f + pointTextHeight - pointPadding
-    }
 
-    private fun calculateImaginaryHPath() {
-        coordY.forEachIndexed { index, _ ->
-            val height = startY + coordYPadding - index * cellHeight
-            imaginaryHPath.moveTo(0f, height)
-            imaginaryHPath.lineTo(viewWidth.toFloat(), height)
-        }
-    }
+        linearGradient = LinearGradient(0f, startY, 0f, -getTrendViewHeight() / 2f,
+                fromColor, toColor, Shader.TileMode.MIRROR)
 
-    private fun calculateTrendViewPath(minPrice: Int, scaleUnit: Int) {
         var maxWidth = 0f
         chartPath.reset()
         linePath.reset()
         val heightUnit = cellHeight / scaleUnit
-        nodes.forEachIndexed { index, it ->
-            if (index <= coordX.size) {
-                it.y = startY - (it.valueY.toFloat() - minPrice) * heightUnit
-                val coord = coordX[index]!!
+        nodes!!.forEachIndexed { index, it ->
+            if (index <= coordXArray.size) {
+                it.y = startY - (it.valueY.toFloat() - showMinPrice) * heightUnit
+                val coord = coordXArray[index]!!
                 when {
                     index == 0 -> it.x = coord.x + coord.width / 2
-                    index <= coordX.size - 1 -> it.x = coord.x + coord.getFullWidth() / 2 - coord.leftSpace
-                    index == coordX.size -> it.x = viewWidth.toFloat() - coord.leftSpace
+                    index <= coordXArray.size - 1 -> it.x = coord.x + coord.getFullWidth() / 2 - coord.leftSpace
+                    index == coordXArray.size -> it.x = viewWidth.toFloat() - coord.leftSpace
                 }
                 maxWidth = Math.max(maxWidth, it.x)
 
@@ -239,8 +253,8 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
                     linePath.lineTo(it.x, it.y)
                 }
                 chartPath.lineTo(it.x, it.y)
-                if (nodes.size <= coordX.size && index == nodes.size - 1 ||
-                        nodes.size > coordX.size && index == coordX.size
+                if (nodes!!.size <= coordXArray.size && index == nodes!!.size - 1 ||
+                        nodes!!.size > coordXArray.size && index == coordXArray.size
                 ) {
                     chartPath.lineTo(it.x, startY)
                 }
@@ -253,24 +267,6 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
         //  linePaint.pathEffect = pathEffect
     }
 
-    private fun reCalculate() {
-        val prices = getMinAndMaxPrice()
-        val showMinPrice = prices[0].toInt()
-        val scaleUnit = (Math.round((prices[1] - prices[0]) / MAX_SCALE)).toInt()
-
-        fillCoord(showMinPrice, scaleUnit)
-        //  viewHeight = MIN_HEIGHT
-        //  viewHeight = Math.max(MIN_HEIGHT, (coordY.size + 2) * CELL_MIN_HEIGHT)
-
-        calculateImaginaryHPath()
-
-        linearGradient = LinearGradient(0f, startY, 0f, -getTrendViewHeight() / 2f,
-                fromColor, toColor, Shader.TileMode.MIRROR)
-
-        calculateTrendViewPath(showMinPrice, scaleUnit)
-  
-    }
-
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(viewWidth, minHeight)
     }
@@ -278,7 +274,7 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                val nearbyGoldNode = getNearbyGoldNode(event.x)
+                val nearbyGoldNode = getNearbyGoldNode(event.x, event.y)
                 if (selectedGoldNode != nearbyGoldNode) {
                     selectedGoldNode = nearbyGoldNode
                     invalidate()
@@ -295,7 +291,7 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
         drawImaginary(canvas)
         drawCoordY(canvas)
         drawCoordX(canvas)
-        drawTrendView(canvas)
+        drawChart(canvas)
         drawTouchedGoldNode(canvas)
     }
 
@@ -311,8 +307,8 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
 
     private fun drawCoordX(canvas: Canvas) {
         textPaint.color = textPaintColor
-        coordX.forEach { coord ->
-            canvas.drawText(coord.value, coord.x, coord.y, textPaint)
+        coordXArray.forEach { coord ->
+            canvas.drawText(coord!!.value, coord.x, coord.y, textPaint)
         }
     }
 
@@ -323,11 +319,11 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
         }
     }
 
-    private fun drawTrendView(canvas: Canvas) {
+    private fun drawChart(canvas: Canvas) {
         canvas.drawPath(linePath, linePaint)
         if (showGoldNode) {
-            nodes.forEachIndexed { index, node ->
-                if (index <= nodes.size) {
+            nodes?.forEachIndexed { index, node ->
+                if (index <= nodes!!.size) {
                     canvas.drawCircle(node.x, node.y, 5f, circlePaint)
                 }
             }
@@ -382,15 +378,17 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
         }
     }
 
-    private fun getNearbyGoldNode(x: Float): GoldNode? {
-        var preOne: GoldNode? = null
-        nodes.forEach {
-            if (preOne != null) {
-                if (x > preOne!!.x && x < it.x) {
-                    return if (x - preOne!!.x > it.x - x) it else preOne
+    private fun getNearbyGoldNode(x: Float, y: Float): GoldNode? {
+        if (nodes != null) {
+            var preOne: GoldNode? = null
+            nodes!!.forEach {
+                if (preOne != null) {
+                    if (x > preOne!!.x && x < it.x) {
+                        return if (x - preOne!!.x > it.x - x) it else preOne
+                    }
                 }
+                preOne = it
             }
-            preOne = it
         }
         return null
     }
@@ -400,16 +398,7 @@ class GoldTrendView(context: Context, attrs: AttributeSet) : View(context, attrs
     }
 
     companion object {
-
-        val date = java.util.Date()
-        val format = SimpleDateFormat("MM-dd", Locale.CHINA)
-
-        private fun format(ms: Long): String {
-            date.time = ms
-            return format.format(date)
-        }
-
-        private const val MIN_WIDTH = 336
+        private const val MIN_WIDTH = 300
         private const val MIN_HEIGHT = 235
         private const val CELL_MIN_WIDTH = 40
         //  private const val CELL_MIN_HEIGHT = 100
