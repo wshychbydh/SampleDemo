@@ -11,6 +11,10 @@
         <attr name="head_radius" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="HeadView">
+        <attr name="head_size" format="dimension" />
+    </declare-styleable>
+
     <declare-styleable name="CarouselIndicator">
         <attr name="width" format="dimension" />
         <attr name="height" format="dimension" />

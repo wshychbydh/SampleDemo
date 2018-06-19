@@ -11,6 +11,23 @@
         app:head_drawable="@drawable/st94"
         app:phone_head_padding="6dp" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:gravity="center">
+
+        <com.cool.eye.func.view.ZoneBg
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.cool.eye.func.view.HeadView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/st94" />
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
