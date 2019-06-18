@@ -10,10 +10,10 @@ import android.view.View
  */
 abstract class DataViewHolder<D>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    protected var data: D? = null
-        private set
+  protected var data: D? = null
+    private set
 
-    open fun updateViewByData(data: D) {
-        this.data = data
-    }
+  open fun updateViewByData(data: D) {
+    this.data = data
+  }
 }

@@ -7,7 +7,7 @@ import android.util.SparseArray
  */
 interface IAddressView<T> {
 
-    fun showAddress(data: List<T>)
+  fun showAddress(data: List<T>)
 
-    fun groupAddress(group: SparseArray<T>)
+  fun groupAddress(group: SparseArray<T>)
 }

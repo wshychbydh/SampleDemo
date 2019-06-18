@@ -1,84 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <com.cool.eye.func.view.ZoneView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:head_drawable="@drawable/st94"
+    app:phone_head_padding="6dp"/>
+
+  <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <com.cool.eye.func.view.ZoneView
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+
+      <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:head_drawable="@drawable/st94"
-        app:phone_head_padding="6dp" />
+        android:onClick="toPermission"
+        android:text="动态获取权限"/>
 
-    <RelativeLayout
+      <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
-        android:gravity="center">
+        android:onClick="toAddress"
+        android:text="地址选择器"/>
 
-        <com.cool.eye.func.view.ZoneBg
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTrendView"
+        android:text="走势图"/>
 
-        <com.cool.eye.func.view.HeadView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/st94" />
-    </RelativeLayout>
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toNotify"
+        android:text="消息监听"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toPhotoView"
+        android:text="拍照"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTask"
+        android:text="任务"/>
 
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toPermission"
-                android:text="动态获取权限" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toAddress"
-                android:text="地址选择器" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toTrendView"
-                android:text="走势图" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toNotify"
-                android:text="消息监听" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toPhotoView"
-                android:text="拍照" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toTask"
-                android:text="任务" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toAdapter"
-                android:text="通用适配器" />
-        </LinearLayout>
-    </ScrollView>
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toAdapter"
+        android:text="通用适配器"/>
+    </LinearLayout>
+  </ScrollView>
 </LinearLayout>

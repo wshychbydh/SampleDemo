@@ -8,28 +8,27 @@ import com.cool.eye.func.address.mvp.view.IAddressView
  */
 class AddressPresenter(val view: IAddressView<String>) {
 
+  fun start() {
+    getData()
+  }
 
-    fun start() {
-        getData()
+  private fun getData() {
+    view.showAddress(DataHelper.list)
+    view.groupAddress(DataHelper.keys)
+  }
+
+  fun search(query: String): List<String> {
+    val list = DataHelper.list
+    val queryList = mutableListOf<String>()
+    list.forEach {
+      if (it.contains(query)) {
+        queryList.add(it)
+      }
     }
+    return queryList
+  }
 
-    private fun getData() {
-        view.showAddress(DataHelper.list)
-        view.groupAddress(DataHelper.keys)
-    }
+  fun stop() {
 
-    fun search(query: String): List<String> {
-        val list = DataHelper.list
-        val queryList = mutableListOf<String>()
-        list.forEach {
-            if (it.contains(query)) {
-                queryList.add(it)
-            }
-        }
-        return queryList
-    }
-
-    fun stop() {
-
-    }
+  }
 }
