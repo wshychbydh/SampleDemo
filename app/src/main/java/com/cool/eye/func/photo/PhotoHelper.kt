@@ -6,8 +6,8 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.widget.Toast
 import com.cool.eye.func.R
-import com.cool.eye.func.permission.Permission
-import com.cool.eye.func.permission.PermissionHelper
+import com.eye.cool.permission.Permission
+import com.eye.cool.permission.PermissionHelper
 import java.io.File
 
 /**
@@ -81,7 +81,7 @@ class PhotoHelper(private val contextWrapper: ContextWrapper) : IPhotoListener {
         //                StrictMode.setVmPolicy(builder.build())
         //                builder.detectFileUriExposure()
         PermissionHelper.Builder(contextWrapper.getActivity())
-                .permission(Permission.Group.CAMERA)
+                .permissions(Permission.CAMERA)
                 .permissionCallback {
                     if (it) {
                         photoFile = File(LocalStorage.composePhotoImageFile())
@@ -97,7 +97,7 @@ class PhotoHelper(private val contextWrapper: ContextWrapper) : IPhotoListener {
 
     override fun onSelectAlbum() {
         PermissionHelper.Builder(contextWrapper.getActivity())
-                .permission(Permission.Group.STORAGE)
+                .permissions(Permission.STORAGE)
                 .permissionCallback {
                     if (it) {
                         PhotoUtil.takeAlbum(contextWrapper)
