@@ -95,12 +95,12 @@ class StickyItemDecoration : RecyclerView.ItemDecoration {
     backgroundPaint!!.color = Color.BLUE
   }
 
-  override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State?) {
+  override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
     super.onDraw(c, parent, state)
     drawVertical(c, parent)
   }
 
-  override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State?) {
+  override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
     super.onDrawOver(c, parent, state)
 
     if (!showStickyHeader) {
@@ -120,7 +120,7 @@ class StickyItemDecoration : RecyclerView.ItemDecoration {
     var flag = false
     if (getTitle(firstVisiblePos + 1) != null && title != getTitle(firstVisiblePos + 1)) {
       //说明是当前组最后一个元素，但不一定碰撞了
-      val child = parent.findViewHolderForAdapterPosition(firstVisiblePos).itemView
+      val child = parent.findViewHolderForAdapterPosition(firstVisiblePos)!!.itemView
       if (child.top + child.measuredHeight < titleHeight) {
         //进一步检测碰撞
         c.save() //保存画布当前的状态
@@ -144,7 +144,7 @@ class StickyItemDecoration : RecyclerView.ItemDecoration {
     }
   }
 
-  override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State?) {
+  override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
     super.getItemOffsets(outRect, view, parent, state)
     val pos = parent.getChildAdapterPosition(view)
     if (!isShowFirstGroup && pos == 0) {

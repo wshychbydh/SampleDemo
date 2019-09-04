@@ -147,13 +147,13 @@ class CarouselIndicator : LinearLayout {
 
     fun setViewPager(viewPager: ViewPager) {
         this.viewPager = viewPager
-        if (viewPager.adapter != null && viewPager.adapter.count > 1) {
+        if (viewPager.adapter != null && viewPager.adapter!!.count > 1) {
             val currentItem = getCurrentItem()
             lastPosition = -1
             createIndicators(currentItem, getDataCount())
             viewPager.addOnPageChangeListener(internalPageChangeListener)
             internalPageChangeListener.onPageSelected(currentItem)
-            viewPager.adapter.registerDataSetObserver(dataSetObserver)
+            viewPager.adapter!!.registerDataSetObserver(dataSetObserver)
         }
 
     }
@@ -295,7 +295,7 @@ class CarouselIndicator : LinearLayout {
             val iCarousel = viewPager!!.adapter as ICarousel
             iCarousel.getDataSize()
         } else {
-            viewPager!!.adapter.count
+            viewPager!!.adapter?.count ?: 0
         }
     }
 }

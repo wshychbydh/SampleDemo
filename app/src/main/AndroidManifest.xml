@@ -26,6 +26,7 @@
     <activity
       android:name="com.eye.cool.permission.PermissionActivity"
       android:exported="false"
+      android:launchMode="singleTask"
       android:theme="@style/AppTheme.Translate" />
     <activity android:name=".address.mvp.view.AddressActivity" />
     <activity android:name=".notify.NotifyActivity" />
@@ -39,7 +40,7 @@
       </intent-filter>
     </service>
 
-    <activity android:name=".photo.PhotoActivity" />
+    <activity android:name="com.eye.cool.photo.PhotoActivity" />
 
     <provider
       android:name="android.support.v4.content.FileProvider"
@@ -53,6 +54,12 @@
 
     <activity android:name=".task.TaskActivity" />
     <activity android:name=".recyclerview.mock.RecyclerAdapterActivity"></activity>
+
+    <activity
+      android:name="com.eye.cool.photo.PhotoPickerDialog"
+      android:exported="false"
+      android:theme="@style/DialogActivity"
+      android:launchMode="singleTask" />
   </application>
 
 </manifest>

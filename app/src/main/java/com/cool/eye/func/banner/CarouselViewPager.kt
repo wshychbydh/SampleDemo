@@ -26,7 +26,7 @@ class CarouselViewPager constructor(private val viewPager: ViewPager, private va
                 viewPager.apply {
                     //FIXME Bug in ++currentItem or currentItem++
                     val nextItem = currentItem + 1
-                    currentItem = if (nextItem >= viewPager.adapter.count) 0 else nextItem
+                    currentItem = if (nextItem >= viewPager.adapter?.count ?: 0) 0 else nextItem
                     postDelayed(action, interval)
                 }
             }

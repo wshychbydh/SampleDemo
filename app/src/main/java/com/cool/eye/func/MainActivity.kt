@@ -7,12 +7,12 @@ import android.view.View
 import android.widget.Toast
 import com.cool.eye.func.address.mvp.view.AddressActivity
 import com.cool.eye.func.notify.NotifyActivity
-import com.cool.eye.func.photo.PhotoActivity
 import com.cool.eye.func.recyclerview.mock.RecyclerAdapterActivity
 import com.cool.eye.func.task.TaskActivity
 import com.cool.eye.func.view.trend.TrendActivity
 import com.eye.cool.permission.Permission
 import com.eye.cool.permission.PermissionHelper
+import com.eye.cool.photo.PhotoActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
   fun toPermission(view: View) {
     PermissionHelper.Builder(this)
-        .permissions(Permission.CAMERA)
         .permissions(Permission.STORAGE)
         .permissions(Permission.MICROPHONE)
         .showRationaleWhenRequest(false)
