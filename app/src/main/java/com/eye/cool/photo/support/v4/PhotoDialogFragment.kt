@@ -8,9 +8,9 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatDialog
-import android.support.v7.app.AppCompatDialogFragment
+import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AppCompatDialog
+import androidx.appcompat.app.AppCompatDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -87,7 +87,7 @@ class PhotoDialogFragment : AppCompatDialogFragment() {
     }
   }
 
-  fun show(manager: FragmentManager) {
+  fun show(manager: androidx.fragment.app.FragmentManager) {
     show(manager, javaClass.simpleName)
   }
 

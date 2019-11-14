@@ -1,6 +1,6 @@
 package com.cool.eye.func.recyclerview
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import java.util.*
 /**
  * Created by cool on 18/6/14.
  */
-abstract class BaseAdapter : RecyclerView.Adapter<DataViewHolder<Any>>() {
+abstract class BaseAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<DataViewHolder<Any>>() {
 
     private val viewHolder = SparseArray<Class<out DataViewHolder<*>>>()
     protected val data = ArrayList<Any>()

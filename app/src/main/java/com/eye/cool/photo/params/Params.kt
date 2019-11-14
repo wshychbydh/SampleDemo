@@ -37,7 +37,7 @@ class Params private constructor() {
       params.wrapper = CompatContext(fragment)
     }
 
-    constructor(supportFragment: android.support.v4.app.Fragment) {
+    constructor(supportFragment: androidx.fragment.app.Fragment) {
       params.wrapper = CompatContext(supportFragment)
     }
 

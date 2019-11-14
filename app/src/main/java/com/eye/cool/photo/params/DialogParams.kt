@@ -2,7 +2,7 @@ package com.eye.cool.photo.params
 
 import android.content.DialogInterface
 import android.content.res.Resources
-import android.support.annotation.StyleRes
+import androidx.annotation.StyleRes
 import android.view.View
 import com.cool.eye.func.R
 import com.eye.cool.photo.support.OnClickListener

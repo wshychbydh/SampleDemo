@@ -1,7 +1,7 @@
 package com.eye.cool.photo.utils
 
 import android.graphics.*
-import android.support.annotation.WorkerThread
+import androidx.annotation.WorkerThread
 import kotlin.math.min
 import kotlin.math.roundToInt
 

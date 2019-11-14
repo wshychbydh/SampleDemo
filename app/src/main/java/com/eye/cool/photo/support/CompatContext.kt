@@ -11,10 +11,10 @@ import android.content.Intent
 class CompatContext {
 
   private var fragment: Fragment? = null
-  private var supportFragment: android.support.v4.app.Fragment? = null
+  private var supportFragment: androidx.fragment.app.Fragment? = null
   private var activity: Activity? = null
 
-  constructor(supportFragment: android.support.v4.app.Fragment) {
+  constructor(supportFragment: androidx.fragment.app.Fragment) {
     this.supportFragment = supportFragment
   }
 

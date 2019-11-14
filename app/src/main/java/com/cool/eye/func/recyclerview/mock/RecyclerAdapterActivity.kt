@@ -1,8 +1,8 @@
 package com.cool.eye.func.recyclerview.mock
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.cool.eye.func.R
 import com.cool.eye.func.recyclerview.loadmore.DefaultLoadingViewHolder
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_recycler_adapter.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RecyclerAdapterActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
+class RecyclerAdapterActivity : AppCompatActivity(), androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener {
 
     private var adapter = LoadMoreAdatper()
 

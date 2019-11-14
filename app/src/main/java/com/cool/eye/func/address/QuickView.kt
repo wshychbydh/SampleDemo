@@ -2,8 +2,8 @@ package com.cool.eye.func.address
 
 import android.content.Context
 import android.graphics.Color
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
@@ -17,9 +17,9 @@ class QuickView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr) {
 
-  private val recyclerView: RecyclerView
+  private val recyclerView: androidx.recyclerview.widget.RecyclerView
   private val quickBar: QuickBar
-  private val layoutManager: LinearLayoutManager
+  private val layoutManager: androidx.recyclerview.widget.LinearLayoutManager
   val itemDecoration: StickyItemDecoration
   var adapter: RecyclerAdapter
     private set
@@ -29,8 +29,8 @@ class QuickView @JvmOverloads constructor(
     recyclerView = view.recyclerView
 
     //设置布局管理器
-    layoutManager = LinearLayoutManager(context)
-    layoutManager.orientation = LinearLayoutManager.VERTICAL
+    layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+    layoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
     recyclerView.layoutManager = layoutManager
     adapter = RecyclerAdapter()
     recyclerView.adapter = adapter

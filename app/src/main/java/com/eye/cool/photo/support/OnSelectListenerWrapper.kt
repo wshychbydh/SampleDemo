@@ -1,7 +1,7 @@
 package com.eye.cool.photo.support
 
 import android.app.DialogFragment
-import android.support.v7.app.AppCompatDialogFragment
+import androidx.appcompat.app.AppCompatDialogFragment
 
 /**
  *Created by ycb on 2019/8/14 0014

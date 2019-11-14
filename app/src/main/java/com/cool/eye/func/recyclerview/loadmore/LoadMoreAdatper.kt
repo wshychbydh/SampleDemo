@@ -1,7 +1,7 @@
 package com.cool.eye.func.recyclerview.loadmore
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cool.eye.func.recyclerview.BaseAdapter
 
 /**
@@ -84,17 +84,17 @@ class LoadMoreAdatper : BaseAdapter() {
         this.loadMoreListener = listener
     }
 
-    fun empowerLoadMoreAbility(recyclerView: RecyclerView) {
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+    fun empowerLoadMoreAbility(recyclerView: androidx.recyclerview.widget.RecyclerView) {
+        recyclerView.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!loadMoreAble) return
                 if (itemCount < defaultCount) return
                 val layoutManager = recyclerView.layoutManager
-                if (layoutManager is LinearLayoutManager) {
+                if (layoutManager is androidx.recyclerview.widget.LinearLayoutManager) {
                     //   val lastItemPosition = layoutManager.findLastVisibleItemPosition()
                     val lastItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE && lastItemPosition + 1 == itemCount) {
+                    if (newState == androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE && lastItemPosition + 1 == itemCount) {
                         status = STATUS_LOADING
                         notifyData()
                         loadMoreListener?.invoke()

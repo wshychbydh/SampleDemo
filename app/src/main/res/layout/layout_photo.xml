@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <android.support.v7.widget.AppCompatButton
+  <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/albumBtn"
     style="@style/PhotoButton"
     android:text="@string/select_album"
@@ -13,7 +13,7 @@
     android:layout_height="1px"
     android:background="#dcdcdc"/>
 
-  <android.support.v7.widget.AppCompatButton
+  <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/photoBtn"
     style="@style/PhotoButton"
     android:text="@string/select_photo"
@@ -21,7 +21,7 @@
     android:textSize="16sp"/>
 
 
-  <android.support.v7.widget.AppCompatButton
+  <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/cancelBtn"
     style="@style/PhotoButton"
     android:layout_marginTop="20dp"

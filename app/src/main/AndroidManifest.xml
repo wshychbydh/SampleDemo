@@ -43,7 +43,7 @@
     <activity android:name="com.eye.cool.photo.PhotoActivity" />
 
     <provider
-      android:name="android.support.v4.content.FileProvider"
+      android:name="androidx.core.content.FileProvider"
       android:authorities="com.cool.eye.func.FileProvider"
       android:exported="false"
       android:grantUriPermissions="true">
@@ -60,6 +60,7 @@
       android:exported="false"
       android:theme="@style/DialogActivity"
       android:launchMode="singleTask" />
+    <activity android:name=".banner.BannerActivity" />
   </application>
 
 </manifest>

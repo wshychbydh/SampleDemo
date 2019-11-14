@@ -3,7 +3,7 @@ package com.eye.cool.photo
 import android.app.Activity
 import android.app.Fragment
 import android.content.DialogInterface
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import android.view.View
 import com.cool.eye.func.R
 import com.eye.cool.photo.params.DialogParams
@@ -19,7 +19,7 @@ class PhotoHelper {
 
   private val compat: CompatContext
 
-  constructor(supportFragment: android.support.v4.app.Fragment) {
+  constructor(supportFragment: androidx.fragment.app.Fragment) {
     compat = CompatContext(supportFragment)
   }
 
@@ -69,7 +69,7 @@ class PhotoHelper {
 
   private fun execute(dialogParams: DialogParams, params: ImageParams, requestCameraPermission: Boolean = false) {
     val activity = compat.activity()
-    if (activity is FragmentActivity) {
+    if (activity is androidx.fragment.app.FragmentActivity) {
       val dialog = createSupportDialogFragment(dialogParams, params, requestCameraPermission)
       params.onSelectListener = OnSelectListenerWrapper(
           compatDialogFragment = dialog,

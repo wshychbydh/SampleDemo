@@ -1,7 +1,7 @@
 package com.cool.eye.func.recyclerview
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import java.util.*
 /**
  * Created by cool on 18/4/18.
  */
-class RecyclerAdapter : RecyclerView.Adapter<DataViewHolder<Any>>() {
+class RecyclerAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<DataViewHolder<Any>>() {
 
     private val viewHolder = SparseArray<Class<out DataViewHolder<*>>>()
     private val data = ArrayList<Any>()
@@ -138,16 +138,16 @@ class RecyclerAdapter : RecyclerView.Adapter<DataViewHolder<Any>>() {
     /**
      * Use for load more
      */
-    fun empowerLoadMoreAbility(recyclerView: RecyclerView) {
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+    fun empowerLoadMoreAbility(recyclerView: androidx.recyclerview.widget.RecyclerView) {
+        recyclerView.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!loadMoreAble) return
                 if (itemCount < defaultCount) return
                 val layoutManager = recyclerView.layoutManager
-                if (layoutManager is LinearLayoutManager) {
+                if (layoutManager is androidx.recyclerview.widget.LinearLayoutManager) {
                     val lastItemPosition = layoutManager.findLastVisibleItemPosition()
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE && lastItemPosition + 1 == itemCount) {
+                    if (newState == androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE && lastItemPosition + 1 == itemCount) {
                         loadMoreListener?.invoke()
                     }
                 }

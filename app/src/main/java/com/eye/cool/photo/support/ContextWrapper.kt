@@ -3,17 +3,17 @@ package com.eye.cool.photo.support
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 
 /**
  *Created by cool on 2018/6/12
  */
 class ContextWrapper {
 
-  private var fragment: Fragment? = null
+  private var fragment: androidx.fragment.app.Fragment? = null
   private var activity: Activity? = null
 
-  constructor(supportFragment: Fragment) {
+  constructor(supportFragment: androidx.fragment.app.Fragment) {
     this.fragment = supportFragment
   }
 

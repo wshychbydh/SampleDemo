@@ -1,6 +1,6 @@
 package com.cool.eye.func.address
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
 
@@ -8,7 +8,7 @@ import android.view.View
  * Created by cool on 18/4/18.
  * Child class must public static inner class or public outer class.
  */
-abstract class DataViewHolder<D>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+abstract class DataViewHolder<D>(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
   protected var data: D? = null
     private set

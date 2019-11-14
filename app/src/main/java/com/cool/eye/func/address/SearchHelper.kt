@@ -1,8 +1,8 @@
 package com.cool.eye.func.address
 
 import android.content.Context
-import android.support.v7.widget.ListPopupWindow
-import android.support.v7.widget.SearchView
+import androidx.appcompat.widget.ListPopupWindow
+import androidx.appcompat.widget.SearchView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import java.util.*
