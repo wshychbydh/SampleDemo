@@ -27,6 +27,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     implementation 'com.github.wshychbydh:banner:1.1.2'
+
+    implementation 'skin.support:skin-support:4.0.4'                   // skin-support
+    implementation 'skin.support:skin-support-appcompat:4.0.4'         // skin-support 基础控件支持
+    implementation 'skin.support:skin-support-constraint-layout:4.0.4'
 }
 repositories {
     mavenCentral()

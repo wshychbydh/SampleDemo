@@ -9,7 +9,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:head_drawable="@drawable/st94"
-    app:phone_head_padding="6dp"/>
+    app:phone_head_padding="6dp" />
 
   <ScrollView
     android:layout_width="match_parent"
@@ -19,53 +19,60 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
+
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toBanner"
-        android:text="Banner"/>
+        android:text="Banner" />
+
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTheme"
+        android:text="主题" />
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toPermission"
-        android:text="动态获取权限"/>
+        android:text="动态获取权限" />
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toAddress"
-        android:text="地址选择器"/>
+        android:text="地址选择器" />
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toTrendView"
-        android:text="走势图"/>
+        android:text="走势图" />
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toNotify"
-        android:text="消息监听"/>
+        android:text="消息监听" />
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toPhotoView"
-        android:text="拍照"/>
+        android:text="拍照" />
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toTask"
-        android:text="任务"/>
+        android:text="任务" />
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toAdapter"
-        android:text="通用适配器"/>
+        android:text="通用适配器" />
     </LinearLayout>
   </ScrollView>
 </LinearLayout>
