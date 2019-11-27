@@ -5,7 +5,7 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
 import android.widget.ImageView
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 
 
 /**

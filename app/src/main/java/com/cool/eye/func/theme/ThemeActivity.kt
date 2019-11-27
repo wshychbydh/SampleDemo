@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.SkinAppCompatDelegateImpl
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 import com.eye.cool.permission.Permission
 import com.eye.cool.permission.PermissionHelper
 import skin.support.SkinCompatManager
@@ -23,7 +23,6 @@ class ThemeActivity : AppCompatActivity() {
 
     PermissionHelper.Builder(this)
         .permissions(Permission.STORAGE)
-        .showRationaleWhenRequest(false)
         .build()
         .request()
   }

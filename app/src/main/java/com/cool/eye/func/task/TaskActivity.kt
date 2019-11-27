@@ -3,7 +3,7 @@ package com.cool.eye.func.task
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 import kotlinx.android.synthetic.main.activity_task.*
 import java.util.*
 

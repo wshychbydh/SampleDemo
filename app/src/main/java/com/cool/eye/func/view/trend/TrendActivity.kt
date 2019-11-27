@@ -1,16 +1,15 @@
 package com.cool.eye.func.view.trend
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import com.cool.eye.func.R
+import androidx.appcompat.app.AppCompatActivity
+import com.cool.eye.demo.R
 import com.cool.eye.func.view.tendency.Node
 import com.cool.eye.func.view.tendency.OrderNode
 import com.cool.eye.func.view.tendency.OrderTrendView
 import com.cool.eye.func.view.tendency.TendencyView
 import com.cool.eye.func.view.trend.helper.GoldTariffHelper
 import com.cool.eye.func.view.trend.view.GoldTrendView
-import com.cool.eye.func.view.trend.view.TrendView
 import kotlin.random.Random
 
 /**
@@ -21,11 +20,6 @@ class TrendActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_trend)
-
-    val chartView = findViewById<View>(R.id.chartView1) as TrendView
-    chartView.setData(GoldTariffHelper.mList)
-    chartView.isFill = true
-    chartView.showNode = false
 
     val chartView2 = findViewById<View>(R.id.chartView2) as GoldTrendView
     chartView2.setData(GoldTariffHelper.mList2)

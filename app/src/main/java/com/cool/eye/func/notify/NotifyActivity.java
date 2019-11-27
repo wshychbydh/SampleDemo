@@ -6,13 +6,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.core.app.NotificationCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
-import com.cool.eye.func.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import com.cool.eye.demo.R;
 import com.cool.eye.func.address.mvp.view.AddressActivity;
 import com.cool.eye.func.notify.util.Util;
 

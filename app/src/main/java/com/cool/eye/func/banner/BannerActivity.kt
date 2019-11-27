@@ -2,7 +2,7 @@ package com.cool.eye.func.banner
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 import com.eye.cool.banner.CarouselParams
 import kotlinx.android.synthetic.main.activity_banner.*
 

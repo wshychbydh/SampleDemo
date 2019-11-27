@@ -4,8 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.cool.eye.func.R
-
+import com.cool.eye.demo.R
 
 /**
  * Created by cool on 2018/6/19.

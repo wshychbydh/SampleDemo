@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.cool.eye.func">
+  package="com.cool.eye.demo">
 
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -8,60 +8,73 @@
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+  <permission android:name="android.permission.TEST" />
+
+  <uses-permission android:name="android.permission.TEST" />
+
+  <uses-permission android:name="android.permission.BODY_SENSORS" />
 
   <application
+    android:name="com.cool.eye.func.App"
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
-    android:name=".App"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".theme.ThemeActivity"></activity>
-    <activity android:name=".MainActivity">
+    <activity android:name="com.cool.eye.func.permission.FilePermissionActivity" />
+    <activity android:name="com.cool.eye.func.theme.ThemeActivity" />
+    <activity android:name="com.cool.eye.func.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity
-      android:name="com.eye.cool.permission.PermissionActivity"
-      android:exported="false"
-      android:launchMode="singleTask"
-      android:theme="@style/AppTheme.Translate" />
-    <activity android:name=".address.mvp.view.AddressActivity" />
-    <activity android:name=".notify.NotifyActivity" />
-    <activity android:name=".view.trend.TrendActivity" />
+    <!--    <activity-->
+    <!--      android:name="com.eye.cool.permission.PermissionActivity"-->
+    <!--      android:exported="false"-->
+    <!--      android:launchMode="singleTask"-->
+    <!--      android:theme="@style/AppTheme.Translate" />-->
+    <activity android:name="com.cool.eye.func.address.mvp.view.AddressActivity" />
+    <activity android:name="com.cool.eye.func.notify.NotifyActivity" />
+    <activity android:name="com.cool.eye.func.view.trend.TrendActivity" />
 
     <service
-      android:name=".notify.NotifyService"
+      android:name="com.cool.eye.func.notify.NotifyService"
       android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
       <intent-filter>
         <action android:name="android.service.notification.NotificationListenerService" />
       </intent-filter>
     </service>
 
-    <activity android:name="com.eye.cool.photo.PhotoActivity" />
+    <activity android:name="com.cool.eye.func.task.TaskActivity" />
+    <activity android:name="com.cool.eye.func.recyclerview.mock.RecyclerAdapterActivity" />
+    <activity android:name="com.cool.eye.func.photo.PhotoActivity" />
+    <activity android:name="com.cool.eye.func.banner.BannerActivity" />
 
-    <provider
-      android:name="androidx.core.content.FileProvider"
-      android:authorities="com.cool.eye.func.FileProvider"
-      android:exported="false"
-      android:grantUriPermissions="true">
-      <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
-    </provider>
+    <!--    <provider-->
+    <!--      android:name="com.cool.eye.func.provider.PhotoFileProvider"-->
+    <!--      android:authorities="aaa"-->
+    <!--      android:exported="false"-->
+    <!--      android:grantUriPermissions="true">-->
+    <!--      <meta-data-->
+    <!--        android:name="android.support.FILE_PROVIDER_PATHS"-->
+    <!--        android:resource="@xml/file_paths_1" />-->
+    <!--    </provider>-->
 
-    <activity android:name=".task.TaskActivity" />
-    <activity android:name=".recyclerview.mock.RecyclerAdapterActivity" />
-    <activity
-      android:name="com.eye.cool.photo.PhotoPickerDialog"
-      android:exported="false"
-      android:launchMode="singleTask"
-      android:theme="@style/DialogActivity" />
-    <activity android:name=".banner.BannerActivity" />
+    <!--    <provider-->
+    <!--      android:name="androidx.core.content.FileProvider"-->
+    <!--      android:authorities="aaa"-->
+    <!--      android:exported="false"-->
+    <!--      android:grantUriPermissions="true">-->
+    <!--      <meta-data-->
+    <!--        android:name="android.support.FILE_PROVIDER_PATHS"-->
+    <!--        android:resource="@xml/file_paths_2" />-->
+    <!--    </provider>-->
+
   </application>
 
 </manifest>

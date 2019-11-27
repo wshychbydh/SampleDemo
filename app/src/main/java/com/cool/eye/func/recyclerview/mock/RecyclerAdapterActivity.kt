@@ -1,10 +1,8 @@
 package com.cool.eye.func.recyclerview.mock
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
-import com.cool.eye.func.R
+import androidx.appcompat.app.AppCompatActivity
+import com.cool.eye.demo.R
 import com.cool.eye.func.recyclerview.loadmore.DefaultLoadingViewHolder
 import com.cool.eye.func.recyclerview.loadmore.DefaultNoDataViewHolder
 import com.cool.eye.func.recyclerview.loadmore.LoadMore

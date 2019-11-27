@@ -1,12 +1,12 @@
 package com.cool.eye.func.address.mvp.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.util.SparseArray
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import com.cool.eye.func.R
+import androidx.appcompat.app.AppCompatActivity
+import com.cool.eye.demo.R
 import com.cool.eye.func.address.DataViewHolder
 import com.cool.eye.func.address.LayoutId
 import com.cool.eye.func.address.QuickView

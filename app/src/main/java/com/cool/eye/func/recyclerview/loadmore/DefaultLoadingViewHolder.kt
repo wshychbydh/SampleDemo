@@ -3,7 +3,7 @@ package com.cool.eye.func.recyclerview.loadmore
 import android.animation.ObjectAnimator
 import android.view.View
 import android.view.animation.LinearInterpolator
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 import com.cool.eye.func.recyclerview.DataViewHolder
 import com.cool.eye.func.recyclerview.LayoutId
 import kotlinx.android.synthetic.main.holder_loading.view.*

@@ -2,12 +2,11 @@ package com.cool.eye.func.address
 
 import android.content.Context
 import android.graphics.Color
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
-import com.cool.eye.func.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cool.eye.demo.R
 import kotlinx.android.synthetic.main.quick_view.view.*
 
 /**

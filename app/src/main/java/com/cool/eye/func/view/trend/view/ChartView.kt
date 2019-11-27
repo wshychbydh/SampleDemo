@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.cool.eye.chart.mode.Coord
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 import com.cool.eye.func.view.trend.mode.Node
 
 /**

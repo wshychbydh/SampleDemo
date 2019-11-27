@@ -23,6 +23,12 @@
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="toFilePermission"
+        android:text="文件权限" />
+
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="toBanner"
         android:text="Banner" />
 

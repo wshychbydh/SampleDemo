@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.cool.eye.func.MainActivity">
+    tools:context="com.cool.eye.demo.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:queryHint="城市名、拼音首字母..." />
     </LinearLayout>
 
-    <com.cool.eye.func.address.QuickView
+    <com.cool.eye.demo.address.QuickView
         android:id="@+id/quickView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

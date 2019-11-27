@@ -5,40 +5,36 @@
   android:orientation="vertical">
 
   <Button
-    android:id="@+id/button1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:onClick="selectUsePhotoDialog"
     android:text="选择图片Dialog" />
 
   <Button
-    android:id="@+id/button2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:onClick="selectUsePhotoDialogFragment"
     android:text="选择图片DialogFragment" />
 
   <Button
-    android:id="@+id/button22"
+    android:id="@+id/picker_image"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="选择图片SupportDialogFragment" />
-
-  <Button
-    android:id="@+id/button3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:onClick="selectUsePhotoHelper"
     android:text="仅仅选图片PhotoHelper" />
 
   <Button
-    android:id="@+id/button4"
+    android:id="@+id/take_photo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:onClick="selectUsePhotoHelper"
     android:text="仅仅拍照PhotoHelper" />
 
   <Button
-    android:id="@+id/button5"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="兼容方式PhotoPickerDialog" />
+    android:onClick="selectUsePhotoActivity"
+    android:text="兼容方式PhotoActivity" />
 
   <ImageView
     android:id="@+id/resultIv"

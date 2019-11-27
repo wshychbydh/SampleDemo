@@ -6,11 +6,10 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.cool.eye.chart.mode.Coord
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 import com.cool.eye.func.view.trend.mode.GoldNode
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * Created by cool on 2018/3/28.

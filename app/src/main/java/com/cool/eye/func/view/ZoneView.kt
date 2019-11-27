@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 
 
 /**

@@ -12,7 +12,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 
 /**
  * Created by cool on 2018/4/18.

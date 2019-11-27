@@ -3,7 +3,7 @@ package com.cool.eye.func.banner
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.cool.eye.func.R
+import com.cool.eye.demo.R
 
 
 /**
