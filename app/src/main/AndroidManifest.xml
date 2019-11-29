@@ -54,6 +54,7 @@
     <activity android:name="com.cool.eye.func.recyclerview.mock.RecyclerAdapterActivity" />
     <activity android:name="com.cool.eye.func.photo.PhotoActivity" />
     <activity android:name="com.cool.eye.func.banner.BannerActivity" />
+    <activity android:name="com.cool.eye.func.install.DownloadActivity" />
 
     <!--    <provider-->
     <!--      android:name="com.cool.eye.func.provider.PhotoFileProvider"-->

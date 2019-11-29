@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.address.mvp.view.AddressActivity
 import com.cool.eye.func.banner.BannerActivity
+import com.cool.eye.func.install.DownloadActivity
 import com.cool.eye.func.notify.NotifyActivity
 import com.cool.eye.func.permission.FilePermissionActivity
 import com.cool.eye.func.photo.PhotoActivity
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() {
     startActivity(Intent(this, FilePermissionActivity::class.java))
   }
 
+  fun toDownloadApk(view: View) {
+    startActivity(Intent(this, DownloadActivity::class.java))
+  }
+
   fun toBanner(view: View) {
     startActivity(Intent(this, BannerActivity::class.java))
   }
@@ -61,9 +66,9 @@ class MainActivity : AppCompatActivity() {
         .permissions(Permission.CALL_LOG)
         .showRationaleWhenRequest(true)
         .deniedPermissionCallback {
-         it.forEach {i->
-           println("denied permission--->$i")
-         }
+          it.forEach { i ->
+            println("denied permission--->$i")
+          }
         }
         .permissionCallback {
           Toast.makeText(this, "授权$it", Toast.LENGTH_SHORT).show()
