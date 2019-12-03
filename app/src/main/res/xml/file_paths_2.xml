@@ -4,5 +4,5 @@
 
   <external-path
     name="external"
-    path="a" />
+    path="/" />
 </paths>

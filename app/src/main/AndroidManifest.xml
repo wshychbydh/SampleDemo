@@ -66,15 +66,15 @@
     <!--        android:resource="@xml/file_paths_1" />-->
     <!--    </provider>-->
 
-    <!--    <provider-->
-    <!--      android:name="androidx.core.content.FileProvider"-->
-    <!--      android:authorities="aaa"-->
-    <!--      android:exported="false"-->
-    <!--      android:grantUriPermissions="true">-->
-    <!--      <meta-data-->
-    <!--        android:name="android.support.FILE_PROVIDER_PATHS"-->
-    <!--        android:resource="@xml/file_paths_2" />-->
-    <!--    </provider>-->
+    <provider
+      android:name="androidx.core.content.FileProvider"
+      android:authorities="test"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/file_paths_2" />
+    </provider>
 
   </application>
 
