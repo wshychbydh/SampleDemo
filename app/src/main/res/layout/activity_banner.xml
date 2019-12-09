@@ -18,4 +18,15 @@
     app:layout_constraintBottom_toBottomOf="@id/viewPager"
     app:layout_constraintEnd_toEndOf="@id/viewPager"
     app:layout_constraintStart_toStartOf="@id/viewPager" />
+
+  <Button
+    android:id="@+id/changeBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:onClick="changePagerNum"
+    android:text="改变页面数量"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/viewPager" />
 </androidx.constraintlayout.widget.ConstraintLayout>
