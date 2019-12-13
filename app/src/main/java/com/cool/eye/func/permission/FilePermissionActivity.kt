@@ -29,7 +29,7 @@ class FilePermissionActivity : AppCompatActivity() {
       val file = File(
           Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "duty.apk")
       //参数1 上下文, 参数2 Provider主机地址 和配置文件中保持一致   参数3  共享的文件
-      val apkUri = FileProvider.getUriForFile(this, "bbb", file)
+      val apkUri = FileProvider.getUriForFile(this, "test", file)
       intent.setDataAndType(apkUri, "application/vnd.android.package-archive")
     } else {
       intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive")

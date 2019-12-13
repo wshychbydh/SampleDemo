@@ -13,7 +13,6 @@
   <permission android:name="android.permission.TEST" />
 
   <uses-permission android:name="android.permission.TEST" />
-
   <uses-permission android:name="android.permission.BODY_SENSORS" />
 
   <application
@@ -24,6 +23,8 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name="com.cool.eye.func.scan.ScanResultActivity" />
+    <activity android:name="com.cool.eye.func.scan.ScanActivity" />
     <activity android:name="com.cool.eye.func.permission.FilePermissionActivity" />
     <activity android:name="com.cool.eye.func.theme.ThemeActivity" />
     <activity android:name="com.cool.eye.func.MainActivity">
@@ -33,11 +34,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <!--    <activity-->
-    <!--      android:name="com.eye.cool.permission.PermissionActivity"-->
-    <!--      android:exported="false"-->
-    <!--      android:launchMode="singleTask"-->
-    <!--      android:theme="@style/AppTheme.Translate" />-->
+
     <activity android:name="com.cool.eye.func.address.mvp.view.AddressActivity" />
     <activity android:name="com.cool.eye.func.notify.NotifyActivity" />
     <activity android:name="com.cool.eye.func.view.trend.TrendActivity" />
@@ -56,16 +53,6 @@
     <activity android:name="com.cool.eye.func.banner.BannerActivity" />
     <activity android:name="com.cool.eye.func.install.DownloadActivity" />
 
-    <!--    <provider-->
-    <!--      android:name="com.cool.eye.func.provider.PhotoFileProvider"-->
-    <!--      android:authorities="aaa"-->
-    <!--      android:exported="false"-->
-    <!--      android:grantUriPermissions="true">-->
-    <!--      <meta-data-->
-    <!--        android:name="android.support.FILE_PROVIDER_PATHS"-->
-    <!--        android:resource="@xml/file_paths_1" />-->
-    <!--    </provider>-->
-
     <provider
       android:name="androidx.core.content.FileProvider"
       android:authorities="test"
@@ -75,7 +62,6 @@
         android:name="android.support.FILE_PROVIDER_PATHS"
         android:resource="@xml/file_paths_2" />
     </provider>
-
   </application>
 
 </manifest>

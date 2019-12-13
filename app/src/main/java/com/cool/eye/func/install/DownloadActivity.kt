@@ -7,10 +7,10 @@ import android.webkit.URLUtil
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
-import com.eye.cool.install.DialogParams
 import com.eye.cool.install.DownloadHelper
-import com.eye.cool.install.DownloadParams
-import com.eye.cool.install.Params
+import com.eye.cool.install.params.DownloadParams
+import com.eye.cool.install.params.Params
+import com.eye.cool.install.params.ProgressParams
 import kotlinx.android.synthetic.main.activity_download.*
 
 /**
@@ -37,7 +37,7 @@ class DownloadActivity : AppCompatActivity() {
         )
         .forceUpdate(true)
         .enableLog(true)
-        .setDialogParams(DialogParams.Builder()
+        .setProgressParams(ProgressParams.Builder()
             .cancelAble(true)
             .dimAmount(1.0f)
             .gravity(Gravity.BOTTOM)

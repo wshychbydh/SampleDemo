@@ -10,12 +10,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.cool.eye.demo.view.tendency.OrderTrendView
+    <com.cool.eye.func.view.tendency.OrderTrendView
       android:id="@+id/trendView"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
 
-    <com.cool.eye.demo.view.tendency.TendencyView
+    <com.cool.eye.func.view.tendency.TendencyView
       android:id="@+id/trendView2"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
@@ -24,7 +24,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-      <com.cool.eye.demo.view.trend.view.GoldTrendView
+      <com.cool.eye.func.view.trend.view.GoldTrendView
         android:id="@+id/chartView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

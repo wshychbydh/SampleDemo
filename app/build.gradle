@@ -43,7 +43,8 @@ dependencies {
     implementation 'com.github.wshychbydh:banner:1.1.3'
     implementation 'com.github.wshychbydh:permission:1.1.2'
     implementation 'com.github.wshychbydh:photo:1.4.0'
-    implementation 'com.github.wshychbydh:install:1.0.0'
+    implementation 'com.github.wshychbydh:install:1.0.2'
+    implementation 'com.github.wshychbydh:scan:1.2.5'
 }
 repositories {
     mavenCentral()
