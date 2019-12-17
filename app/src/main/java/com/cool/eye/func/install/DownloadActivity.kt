@@ -11,6 +11,7 @@ import com.eye.cool.install.DownloadHelper
 import com.eye.cool.install.params.DownloadParams
 import com.eye.cool.install.params.Params
 import com.eye.cool.install.params.ProgressParams
+import com.eye.cool.install.params.PromptParams
 import kotlinx.android.synthetic.main.activity_download.*
 
 /**
@@ -35,16 +36,24 @@ class DownloadActivity : AppCompatActivity() {
                 .setDownloadUrl(url)
                 .build()
         )
+        .setPromptParams(
+            PromptParams.Builder()
+                .setContent("测试升级")
+                .windowAnim(R.style.DialogAnim)
+                .dimAmount(.8f)
+                .cancelAble(true)
+                .size((resources.displayMetrics.widthPixels * 4f / 5f).toInt(), -2)
+                .build()
+        )
         .forceUpdate(true)
         .enableLog(true)
         .setProgressParams(ProgressParams.Builder()
             .cancelAble(true)
-            .dimAmount(1.0f)
-            .gravity(Gravity.BOTTOM)
-            .size(400, 400)
+            .windowAnim(R.style.DialogAnim)
+            .dimAmount(0.6f)
+            .gravity(Gravity.CENTER)
+            .size((resources.displayMetrics.widthPixels * 3f / 5f).toInt(), 0)
             .setCoordinate(130, 200)
-            .windowAnim(R.style.AnimBottom)
-            .backgroundDrawable(resources.getDrawable(R.drawable.sidebar_background))
             .build())
         .build()
     ).start()
