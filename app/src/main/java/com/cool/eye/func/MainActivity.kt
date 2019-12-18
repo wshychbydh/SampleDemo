@@ -3,7 +3,6 @@ package com.cool.eye.func
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.address.mvp.view.AddressActivity
@@ -11,14 +10,13 @@ import com.cool.eye.func.banner.BannerActivity
 import com.cool.eye.func.install.DownloadActivity
 import com.cool.eye.func.notify.NotifyActivity
 import com.cool.eye.func.permission.FilePermissionActivity
+import com.cool.eye.func.permission.PermissionTestActivity
 import com.cool.eye.func.photo.PhotoActivity
 import com.cool.eye.func.recyclerview.mock.RecyclerAdapterActivity
 import com.cool.eye.func.scan.ScanActivity
 import com.cool.eye.func.task.TaskActivity
 import com.cool.eye.func.theme.ThemeActivity
 import com.cool.eye.func.view.trend.TrendActivity
-import com.eye.cool.permission.Permission
-import com.eye.cool.permission.PermissionHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,20 +42,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   fun toPermission(view: View) {
-    PermissionHelper.Builder(this)
-        .permission(android.Manifest.permission.REQUEST_INSTALL_PACKAGES)
-        .permissions(Permission.CALL_LOG)
-        .showRationaleWhenRequest(true)
-        .deniedPermissionCallback {
-          it.forEach { i ->
-            println("denied permission--->$i")
-          }
-        }
-        .permissionCallback {
-          Toast.makeText(this, "授权$it", Toast.LENGTH_SHORT).show()
-        }
-        .build()
-        .request()
+    startActivity(Intent(this, PermissionTestActivity::class.java))
   }
 
   fun toAddress(view: View) {

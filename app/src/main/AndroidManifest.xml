@@ -52,6 +52,7 @@
     <activity android:name="com.cool.eye.func.photo.PhotoActivity" />
     <activity android:name="com.cool.eye.func.banner.BannerActivity" />
     <activity android:name="com.cool.eye.func.install.DownloadActivity" />
+    <activity android:name="com.cool.eye.func.permission.PermissionTestActivity" />
 
     <provider
       android:name="androidx.core.content.FileProvider"

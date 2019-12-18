@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.cool.eye.demo.R
-import com.eye.cool.permission.Permission
+import com.eye.cool.permission.support.Permission
 import com.eye.cool.permission.PermissionHelper
 import skin.support.SkinCompatManager
 import skin.support.content.res.SkinCompatUserThemeManager
