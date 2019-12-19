@@ -1,7 +1,9 @@
 package com.cool.eye.func.recyclerview
 
 /**
- *Created by cool on 2018/5/31
- * Use for mark empty view
+ *Created by ycb on 2019/12/19 0019
  */
-class Empty
+open class Empty(
+    var resId: Int = 0,
+    var data: String? = null
+)

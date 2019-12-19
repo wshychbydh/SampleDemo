@@ -25,11 +25,4 @@
     android:layout_marginTop="20dp"
     android:onClick="requestInContext"
     android:text="Context中请求" />
-
-  <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:onClick="showAlertDialog"
-    android:text="测试生命周期" />
 </LinearLayout>

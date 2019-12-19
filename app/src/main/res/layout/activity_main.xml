@@ -18,6 +18,7 @@
     <com.cool.eye.func.view.FlexBoxLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_margin="20dp"
       android:orientation="vertical">
 
       <androidx.appcompat.widget.AppCompatButton
