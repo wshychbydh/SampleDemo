@@ -8,6 +8,7 @@
     android:id="@+id/viewPager"
     android:layout_width="match_parent"
     android:layout_height="200dp"
+    android:layout_marginTop="100dp"
     app:layout_constraintTop_toTopOf="parent" />
 
   <com.eye.cool.banner.CarouselIndicator
@@ -23,7 +24,7 @@
     android:id="@+id/changeBtn"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="40dp"
     android:onClick="changePagerNum"
     android:text="改变页面数量"
     app:layout_constraintEnd_toEndOf="parent"
