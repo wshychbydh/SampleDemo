@@ -225,7 +225,7 @@ class ChartView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private fun drawCoordY(canvas: Canvas) {
         textPaint.color = Color.BLACK
         coordY.forEachIndexed { index, it ->
-            canvas.drawText(it, 0f, startY - cellHeight * index, textPaint)
+            canvas.drawText(it!!, 0f, startY - cellHeight * index, textPaint)
         }
     }
 

@@ -16,6 +16,7 @@ import com.cool.eye.func.recyclerview.mock.RecyclerAdapterActivity
 import com.cool.eye.func.scan.ScanActivity
 import com.cool.eye.func.task.TaskActivity
 import com.cool.eye.func.theme.ThemeActivity
+import com.cool.eye.func.video.VideoActivity
 import com.cool.eye.func.view.trend.TrendActivity
 
 class MainActivity : AppCompatActivity() {
@@ -71,5 +72,9 @@ class MainActivity : AppCompatActivity() {
 
   fun toScan(v: View) {
     startActivity(Intent(this, ScanActivity::class.java))
+  }
+
+  fun toVideo(v: View) {
+    startActivity(Intent(this, VideoActivity::class.java))
   }
 }

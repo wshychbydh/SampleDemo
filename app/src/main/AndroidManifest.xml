@@ -15,6 +15,8 @@
   <uses-permission android:name="android.permission.TEST" />
   <uses-permission android:name="android.permission.BODY_SENSORS" />
 
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <application
     android:name="com.cool.eye.func.App"
     android:allowBackup="true"
@@ -23,6 +25,9 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity
+      android:name="com.cool.eye.func.video.VideoActivity"
+      android:configChanges="orientation|screenSize" />
     <activity android:name="com.cool.eye.func.scan.ScanResultActivity" />
     <activity android:name="com.cool.eye.func.scan.ScanActivity" />
     <activity android:name="com.cool.eye.func.permission.FilePermissionActivity" />
@@ -34,7 +39,6 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
     <activity android:name="com.cool.eye.func.address.mvp.view.AddressActivity" />
     <activity android:name="com.cool.eye.func.notify.NotifyActivity" />
     <activity android:name="com.cool.eye.func.view.trend.TrendActivity" />

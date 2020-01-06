@@ -92,7 +92,7 @@ class HeadView @JvmOverloads constructor(
 
     private fun drawHead(canvas: Canvas) {
         if (head != null) {
-            canvas.drawBitmap(head, headSrcRect, headDestRect, bitmapPaint)
+            canvas.drawBitmap(head!!, headSrcRect, headDestRect, bitmapPaint)
         }
     }
 

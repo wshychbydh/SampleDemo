@@ -315,7 +315,7 @@ class GoldTrendView2(context: Context, attrs: AttributeSet) : View(context, attr
     private fun drawCoordY(canvas: Canvas) {
         textPaint.color = textPaintColor
         coordY.forEachIndexed { index, it ->
-            canvas.drawText(it, 0f, startY - cellHeight * index, textPaint)
+            canvas.drawText(it!!, 0f, startY - cellHeight * index, textPaint)
         }
     }
 
