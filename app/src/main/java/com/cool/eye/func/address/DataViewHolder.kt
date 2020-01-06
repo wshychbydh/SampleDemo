@@ -1,14 +1,14 @@
 package com.cool.eye.func.address
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 
 /**
  * Created by cool on 18/4/18.
  * Child class must public static inner class or public outer class.
  */
-abstract class DataViewHolder<D>(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+abstract class DataViewHolder<D>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
   protected var data: D? = null
     private set

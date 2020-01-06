@@ -18,7 +18,7 @@ class QuickView @JvmOverloads constructor(
 
   private val recyclerView: androidx.recyclerview.widget.RecyclerView
   private val quickBar: QuickBar
-  private val layoutManager: androidx.recyclerview.widget.LinearLayoutManager
+  private val layoutManager: LinearLayoutManager
   val itemDecoration: StickyItemDecoration
   var adapter: RecyclerAdapter
     private set
@@ -28,8 +28,8 @@ class QuickView @JvmOverloads constructor(
     recyclerView = view.recyclerView
 
     //设置布局管理器
-    layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
-    layoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+    layoutManager = LinearLayoutManager(context)
+    layoutManager.orientation = LinearLayoutManager.VERTICAL
     recyclerView.layoutManager = layoutManager
     adapter = RecyclerAdapter()
     recyclerView.adapter = adapter

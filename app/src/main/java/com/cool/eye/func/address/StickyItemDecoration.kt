@@ -7,22 +7,21 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.util.SparseArray
+import android.util.TypedValue
+import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.util.SparseArray
-import android.util.TypedValue
-import android.view.View
 
 /**
  * Created by cool on 2017/4/19.
  * Only support LinearLayoutManager.Vertical
  */
 
-class StickyItemDecoration : androidx.recyclerview.widget.RecyclerView.ItemDecoration {
+class StickyItemDecoration : RecyclerView.ItemDecoration {
   private val dividerWidth: Int
   private var divider: Drawable? = null
   private var dividerHeight: Int = 0
@@ -95,12 +94,12 @@ class StickyItemDecoration : androidx.recyclerview.widget.RecyclerView.ItemDecor
     backgroundPaint!!.color = Color.BLUE
   }
 
-  override fun onDraw(c: Canvas, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
+  override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
     super.onDraw(c, parent, state)
     drawVertical(c, parent)
   }
 
-  override fun onDrawOver(c: Canvas, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
+  override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
     super.onDrawOver(c, parent, state)
 
     if (!showStickyHeader) {
@@ -112,7 +111,7 @@ class StickyItemDecoration : androidx.recyclerview.widget.RecyclerView.ItemDecor
     val firstVisiblePos = (parent.layoutManager as androidx.recyclerview.widget.LinearLayoutManager).findFirstVisibleItemPosition()
     if (!isShowFirstGroup && firstVisiblePos < keys.valueAt(0).length) return
 
-    if (firstVisiblePos == androidx.recyclerview.widget.RecyclerView.NO_POSITION) return
+    if (firstVisiblePos == RecyclerView.NO_POSITION) return
 
     val title = getTitle(firstVisiblePos)
     if (title.isNullOrEmpty()) return
@@ -144,7 +143,7 @@ class StickyItemDecoration : androidx.recyclerview.widget.RecyclerView.ItemDecor
     }
   }
 
-  override fun getItemOffsets(outRect: Rect, view: View, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
+  override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
     super.getItemOffsets(outRect, view, parent, state)
     val pos = parent.getChildAdapterPosition(view)
     if (!isShowFirstGroup && pos == 0) {
@@ -183,14 +182,14 @@ class StickyItemDecoration : androidx.recyclerview.widget.RecyclerView.ItemDecor
     }
   }
 
-  private fun drawVertical(c: Canvas, parent: androidx.recyclerview.widget.RecyclerView) {
+  private fun drawVertical(c: Canvas, parent: RecyclerView) {
     val left = parent.paddingLeft
     val right = parent.width - parent.paddingRight
     var top: Int
     var bottom: Int
     for (i in 1 until parent.childCount) {
       val child = parent.getChildAt(i)
-      val params = child.layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams
+      val params = child.layoutParams as RecyclerView.LayoutParams
       val position = params.viewLayoutPosition
       if (keys.indexOfKey(position) > -1) {
         //画头部
