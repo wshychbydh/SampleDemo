@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import com.cool.eye.demo.R;
-import com.cool.eye.func.address.mvp.view.AddressActivity;
+import com.cool.eye.func.address.view.AddressActivity;
 import com.cool.eye.func.notify.util.Util;
 
 public class NotifyActivity extends AppCompatActivity implements MyMessage {

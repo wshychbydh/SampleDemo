@@ -39,7 +39,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name="com.cool.eye.func.address.mvp.view.AddressActivity" />
+    <activity android:name="com.cool.eye.func.address.view.AddressActivity" />
     <activity android:name="com.cool.eye.func.notify.NotifyActivity" />
     <activity android:name="com.cool.eye.func.view.trend.TrendActivity" />
 
@@ -52,7 +52,7 @@
     </service>
 
     <activity android:name="com.cool.eye.func.task.TaskActivity" />
-    <activity android:name="com.cool.eye.func.recyclerview.mock.RecyclerAdapterActivity" />
+    <activity android:name="com.cool.eye.func.recyclerview.RecyclerAdapterActivity" />
     <activity android:name="com.cool.eye.func.photo.PhotoActivity" />
     <activity android:name="com.cool.eye.func.banner.BannerActivity" />
     <activity android:name="com.cool.eye.func.install.DownloadActivity" />

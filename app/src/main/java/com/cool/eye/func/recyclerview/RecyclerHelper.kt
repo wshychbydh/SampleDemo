@@ -1,4 +1,4 @@
-package com.cool.eye.func.recyclerview.mock
+package com.cool.eye.func.recyclerview
 
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cool.eye.demo.R
-import com.cool.eye.func.recyclerview.Empty
-import com.cool.eye.func.recyclerview.RecyclerAdapter
-import com.cool.eye.func.recyclerview.loadmore.*
+import com.eye.cool.adapter.loadmore.*
+import com.eye.cool.adapter.support.Empty
+import com.eye.cool.adapter.support.RecyclerAdapter
 
 /**
  *Created by cool on 2018/6/29

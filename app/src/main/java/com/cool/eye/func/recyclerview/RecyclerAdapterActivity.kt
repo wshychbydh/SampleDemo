@@ -1,18 +1,20 @@
-package com.cool.eye.func.recyclerview.mock
+package com.cool.eye.func.recyclerview
 
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cool.eye.demo.R
-import com.cool.eye.func.recyclerview.loadmore.LoadMoreAdapter
-import com.cool.eye.func.recyclerview.loadmore.Loading
-import com.cool.eye.func.recyclerview.loadmore.NoMoreData
+import com.eye.cool.adapter.loadmore.ILoadMoreListener
+import com.eye.cool.adapter.loadmore.LoadMoreAdapter
+import com.eye.cool.adapter.loadmore.Loading
+import com.eye.cool.adapter.loadmore.NoMoreData
 import kotlinx.android.synthetic.main.activity_recycler_adapter.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RecyclerAdapterActivity : AppCompatActivity(), androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener {
+class RecyclerAdapterActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
 
   private lateinit var adapter: LoadMoreAdapter
 
@@ -27,9 +29,13 @@ class RecyclerAdapterActivity : AppCompatActivity(), androidx.swiperefreshlayout
     adapter.setDefaultCount(10)
     adapter.setLoading(Loading("加载更多中..."))
     adapter.setNoData(NoMoreData("没有更多数据"))
-    adapter.setLoadMoreListener {
-      onLoadMore()
-    }
+    adapter.setLoadMoreListener(object : ILoadMoreListener {
+      override fun onLoadMore() {
+        handler.postDelayed({
+          adapter.appendData(mockData())
+        }, 2000)
+      }
+    })
 
     refreshLayout.setOnRefreshListener(this)
 
@@ -45,13 +51,6 @@ class RecyclerAdapterActivity : AppCompatActivity(), androidx.swiperefreshlayout
   }
 
   private val handler = Handler()
-
-  private fun onLoadMore() {
-    handler.postDelayed({
-      adapter.appendData(mockData())
-    }, 2000)
-  }
-
 
   private val random = Random()
 

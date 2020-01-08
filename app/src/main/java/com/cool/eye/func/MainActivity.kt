@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
-import com.cool.eye.func.address.mvp.view.AddressActivity
+import com.cool.eye.func.address.view.AddressActivity
 import com.cool.eye.func.banner.BannerActivity
 import com.cool.eye.func.install.DownloadActivity
 import com.cool.eye.func.notify.NotifyActivity
 import com.cool.eye.func.permission.FilePermissionActivity
 import com.cool.eye.func.permission.PermissionTestActivity
 import com.cool.eye.func.photo.PhotoActivity
-import com.cool.eye.func.recyclerview.mock.RecyclerAdapterActivity
+import com.cool.eye.func.recyclerview.RecyclerAdapterActivity
 import com.cool.eye.func.scan.ScanActivity
 import com.cool.eye.func.task.TaskActivity
 import com.cool.eye.func.theme.ThemeActivity

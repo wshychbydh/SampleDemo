@@ -1,4 +1,4 @@
-package com.cool.eye.func.recyclerview.mock
+package com.cool.eye.func.recyclerview
 
 /**
  *Created by cool on 2018/6/14
