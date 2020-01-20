@@ -1,34 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
-  <VideoView
-    android:id="@+id/videoView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-  <SeekBar
-    android:id="@+id/videoSeekBar"
-    style="@style/Widget.AppCompat.SeekBar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
-    app:layout_constraintBottom_toBottomOf="@id/videoView" />
-
-  <ImageView
-    android:id="@+id/videoFullScreenIv"
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/videoContainer"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:src="@mipmap/ic_launcher"
-    app:layout_constraintBottom_toTopOf="@id/videoSeekBar"
-    app:layout_constraintEnd_toEndOf="@id/videoView" />
+    android:layout_gravity="center"
+    android:background="@android:color/black">
 
-  <CheckBox
-    android:id="@+id/videoPauseCb"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toTopOf="@id/videoSeekBar"
-    app:layout_constraintStart_toStartOf="parent" />
+    <VideoView
+      android:id="@+id/videoView"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+      android:id="@+id/videoFullScreenIv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="15dp"
+      android:layout_marginRight="15dp"
+      android:src="@drawable/video_full_ic"
+      app:layout_constraintBottom_toBottomOf="@id/videoPlayCb"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/videoSeekBar"
+      app:layout_constraintTop_toTopOf="@id/videoPlayCb" />
+
+    <CheckBox
+      android:id="@+id/videoPlayCb"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="15dp"
+      android:layout_marginLeft="15dp"
+      android:layout_marginBottom="16dp"
+      android:background="@android:color/transparent"
+      android:button="@drawable/video_play_selector"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/videoDurationTv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="10dp"
+      android:layout_marginLeft="10dp"
+      android:textColor="@android:color/white"
+      android:textSize="11sp"
+      app:layout_constraintBottom_toBottomOf="@id/videoPlayCb"
+      app:layout_constraintStart_toEndOf="@id/videoPlayCb"
+      app:layout_constraintTop_toTopOf="@id/videoPlayCb"
+      tools:text="0:01/0:08" />
+
+    <SeekBar
+      android:id="@+id/videoSeekBar"
+      style="@style/CustomSeekbarStyle"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:progress="0"
+      app:layout_constraintBottom_toBottomOf="@id/videoPlayCb"
+      app:layout_constraintEnd_toStartOf="@id/videoFullScreenIv"
+      app:layout_constraintStart_toEndOf="@id/videoDurationTv"
+      app:layout_constraintTop_toTopOf="@id/videoPlayCb" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+      android:id="@+id/videoPb"
+      style="@style/Widget.AppCompat.ProgressBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="@id/videoView"
+      app:layout_constraintEnd_toEndOf="@id/videoView"
+      app:layout_constraintStart_toStartOf="@id/videoView"
+      app:layout_constraintTop_toTopOf="@id/videoView" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+      android:id="@+id/videoPlayBtn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@android:color/transparent"
+      android:src="@drawable/video_play_ic"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+      android:id="@+id/videoBackIb"
+      android:layout_width="?actionBarSize"
+      android:layout_height="?actionBarSize"
+      android:background="@android:color/transparent"
+      android:src="@drawable/ic_arrow_left"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>

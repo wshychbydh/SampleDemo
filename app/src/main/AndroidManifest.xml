@@ -25,9 +25,7 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity
-      android:name="com.cool.eye.func.video.VideoActivity"
-      android:configChanges="orientation|screenSize" />
+    <activity android:name="com.cool.eye.func.video.VideoActivity" />
     <activity android:name="com.cool.eye.func.scan.ScanResultActivity" />
     <activity android:name="com.cool.eye.func.scan.ScanActivity" />
     <activity android:name="com.cool.eye.func.permission.FilePermissionActivity" />

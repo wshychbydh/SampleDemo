@@ -49,4 +49,11 @@
     <item name="android:windowEnterAnimation">@anim/dialog_in</item>
     <item name="android:windowExitAnimation">@anim/dialog_out</item>
   </style>
+
+  <style name="CustomSeekbarStyle">
+    <item name="android:maxHeight">3dp</item>
+    <item name="android:progressDrawable">@drawable/video_progress_bg</item>
+    <item name="android:minHeight">3dp</item>
+    <!--    <item name="android:thumb">@mipmap/thumb</item>-->
+  </style>
 </resources>
