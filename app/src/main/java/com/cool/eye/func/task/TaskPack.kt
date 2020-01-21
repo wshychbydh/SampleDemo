@@ -17,13 +17,13 @@ class TaskPack {
     }
 
     fun <T1, T2, T> zip(R1: () -> T1, R2: () -> T2): Executor<T1, T2, T> {
-        val executeQueue = TaskPack.Executor<T1, T2, T>()
+        val executeQueue = Executor<T1, T2, T>()
         executeQueue.zip(R1, R2)
         return executeQueue
     }
 
     fun <D, T> zip(vararg R: () -> D): ExecuteQueue<D, T> {
-        val executeQueue = TaskPack.ExecuteQueue<D, T>()
+        val executeQueue = ExecuteQueue<D, T>()
         executeQueue.zip(*R)
         return executeQueue
     }

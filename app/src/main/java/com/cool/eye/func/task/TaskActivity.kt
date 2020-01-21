@@ -14,7 +14,7 @@ class TaskActivity : AppCompatActivity() {
     setContentView(R.layout.activity_task)
   }
 
-  val random = Random()
+  private val random = Random()
 
   fun flowTask(view: View) {
     TaskFlow().create {
@@ -72,15 +72,15 @@ class TaskActivity : AppCompatActivity() {
 
   fun asyncTask(view: View) {
     AsyncPack().zip<Double, String, String>({
-      Thread({
+      Thread {
         Thread.sleep(random.nextInt(500) + 100L)
         it.invoke(random.nextDouble())
-      }).start()
+      }.start()
     }, {
-      Thread({
+      Thread {
         Thread.sleep(random.nextInt(500) + 100L)
         it.invoke("asyncTask")
-      }).start()
+      }.start()
     })
         .compose { data1, data2 ->
           "$data1 $data2"
@@ -92,20 +92,20 @@ class TaskActivity : AppCompatActivity() {
 
   fun asyncMultiTask(v: View) {
     AsyncPack().zip<String, String>({
-      Thread({
+      Thread {
         Thread.sleep(random.nextInt(500) + 100L)
         it.invoke("asyncTask1")
-      }).start()
+      }.start()
     }, {
-      Thread({
+      Thread {
         Thread.sleep(random.nextInt(500) + 100L)
         it.invoke("asyncTask2")
-      }).start()
+      }.start()
     }, {
-      Thread({
+      Thread {
         Thread.sleep(random.nextInt(500) + 100L)
         it.invoke("asyncTask3")
-      }).start()
+      }.start()
     }).compose {
       val sb = StringBuilder()
       it.forEach {

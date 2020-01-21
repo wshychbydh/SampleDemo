@@ -10,13 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 
 class VideoActivity : AppCompatActivity() {
 
-  private lateinit var videoView: MyVideoView
+  private lateinit var videoView: VideoView
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val bundle = savedInstanceState ?: Bundle()
-    bundle.putString(MyVideoView.URL, intent.getStringExtra(URL))
-    videoView = MyVideoView(this, bundle)
+    bundle.putString(VideoView.URL, intent.getStringExtra(URL))
+    videoView = VideoView(this, bundle)
     if (videoView.isWideScreen()) {
       requestWindowFeature(Window.FEATURE_NO_TITLE)
       window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)

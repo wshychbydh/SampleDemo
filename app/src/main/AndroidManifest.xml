@@ -37,7 +37,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name="com.cool.eye.func.address.view.AddressActivity" />
+    <activity
+      android:name="com.cool.eye.func.address.view.AddressActivity"
+      android:windowSoftInputMode="adjustNothing" />
     <activity android:name="com.cool.eye.func.notify.NotifyActivity" />
     <activity android:name="com.cool.eye.func.view.trend.TrendActivity" />
 

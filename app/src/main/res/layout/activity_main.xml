@@ -1,103 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical">
+  android:layout_height="wrap_content">
 
-  <com.cool.eye.func.view.ZoneView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:head_drawable="@drawable/st94"
-    app:phone_head_padding="6dp" />
-
-  <ScrollView
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <com.cool.eye.func.view.FlexBoxLayout
+    <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_margin="20dp"
-      android:orientation="vertical">
+      android:padding="15dp"
+      android:text="依赖库示例："
+      android:textSize="20sp"
+      android:textStyle="bold" />
 
-      <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="toFilePermission"
-        android:text="文件权限" />
-
-      <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="toDownloadApk"
-        android:text="下载安装apk" />
-
-      <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="toBanner"
-        android:text="Banner" />
-
-      <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="toTheme"
-        android:text="主题" />
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingStart="15dp"
+      android:paddingEnd="15dp">
 
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toPermission"
-        android:text="动态获取权限" />
+        android:text="动态获取权限（permission）"
+        android:textAllCaps="false" />
 
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="toAddress"
-        android:text="地址选择器" />
+        android:onClick="toDownloadApk"
+        android:text="下载安装apk（install）"
+        android:textAllCaps="false" />
 
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="toTrendView"
-        android:text="走势图" />
-
-      <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="toNotify"
-        android:text="消息监听" />
+        android:onClick="toBanner"
+        android:text="Banner（banner）"
+        android:textAllCaps="false" />
 
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toPhotoView"
-        android:text="拍照" />
-
-      <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="toTask"
-        android:text="任务" />
-
-      <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="toAdapter"
-        android:text="通用适配器" />
+        android:text="拍照（photo）"
+        android:textAllCaps="false" />
 
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toScan"
-        android:text="扫码" />
+        android:text="扫码（scan）"
+        android:textAllCaps="false" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toAddress"
+        android:text="通讯录选择器（book）"
+        android:textAllCaps="false" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toAdapter"
+        android:text="通用适配器（recyclerAdapter）"
+        android:textAllCaps="false" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTheme"
+        android:text="主题（skin）"
+        android:textAllCaps="false" />
+
+    </LinearLayout>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="15dp"
+      android:text="依赖库示例："
+      android:textSize="20sp"
+      android:textStyle="bold" />
+
+    <com.cool.eye.func.view.FlexBoxLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingStart="15dp"
+      android:paddingEnd="15dp">
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toFilePermission"
+        android:text="7.0文件权限" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTrendView"
+        android:text="自定义走势图" />
 
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toVideo"
         android:text="播放视频" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toNotify"
+        android:text="QQ、微信等消息监听" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTask"
+        android:text="打包任务" />
+
     </com.cool.eye.func.view.FlexBoxLayout>
-  </ScrollView>
-</LinearLayout>
+  </LinearLayout>
+
+</ScrollView>

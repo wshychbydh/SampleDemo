@@ -7,15 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.cool.eye.demo.R
-import com.eye.cool.permission.support.Permission
 import com.eye.cool.permission.PermissionHelper
+import com.eye.cool.permission.support.Permission
+import kotlinx.android.synthetic.main.activity_theme.*
 import skin.support.SkinCompatManager
 import skin.support.content.res.SkinCompatUserThemeManager
+import kotlin.random.Random
 
 /**
  * https://github.com/ximsfei/Android-skin-support
  */
 class ThemeActivity : AppCompatActivity() {
+
+  val bgs = intArrayOf(R.drawable.theme_bg1, R.drawable.theme_bg2, R.drawable.theme_bg3)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -32,6 +36,7 @@ class ThemeActivity : AppCompatActivity() {
   }
 
   fun changeTheme(view: View) {
+    themeBgLayout.setBackgroundResource(bgs[Random.nextInt(bgs.size)])
     // loadTheme(CustomSDCardLoader.SKIN_LOADER_STRATEGY_SDCARD)
     // loadTheme(ZipSDCardLoader.SKIN_LOADER_STRATEGY_ZIP)
     loadTheme(SkinCompatManager.SKIN_LOADER_STRATEGY_ASSETS)

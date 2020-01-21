@@ -7,31 +7,31 @@ import android.graphics.Point
 import android.view.OrientationEventListener
 import android.view.WindowManager
 
-class MyOrientationDetector(private val activity: Activity) : OrientationEventListener(activity) {
+class OrientationDetector(private val activity: Activity) : OrientationEventListener(activity) {
 
-  private val mWindowManager: WindowManager = activity.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-  private var mLastOrientation = 0
+  private val windowManager: WindowManager = activity.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+  private var lastOrientation = 0
 
   val isWideScreen: Boolean
     get() {
-      val display = mWindowManager.defaultDisplay
       val pt = Point()
-      display.getSize(pt)
+      windowManager.defaultDisplay.getSize(pt)
       return pt.x > pt.y
     }
 
   override fun onOrientationChanged(orientation: Int) {
-    val value = getCurentOrientationEx(orientation)
-    if (value != mLastOrientation) {
-      mLastOrientation = value
+    val value = getCurrentOrientation(orientation)
+    if (value != lastOrientation) {
+      lastOrientation = value
       val current = activity.requestedOrientation
-      if (current == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT || current == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+      if (current == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+          || current == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
         activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
       }
     }
   }
 
-  private fun getCurentOrientationEx(orientation: Int): Int {
+  private fun getCurrentOrientation(orientation: Int): Int {
     var value = 0
     if (orientation >= 315 || orientation < 45) {
       // 0度

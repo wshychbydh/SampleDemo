@@ -5,7 +5,10 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 
-class FlexBoxLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : ViewGroup(context, attrs) {
+class FlexBoxLayout @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null
+) : ViewGroup(context, attrs) {
   private val screenWidth: Int = context.resources.displayMetrics.widthPixels
   private val density = context.resources.displayMetrics.density
   private var horizontalSpace = 0

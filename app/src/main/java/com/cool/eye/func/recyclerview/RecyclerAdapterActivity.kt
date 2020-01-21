@@ -47,7 +47,7 @@ class RecyclerAdapterActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
     handler.postDelayed({
       adapter.updateData(mockData())
       refreshLayout.isRefreshing = false
-    }, 2000)
+    }, 1000)
   }
 
   private val handler = Handler()

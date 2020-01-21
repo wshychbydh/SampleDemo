@@ -10,6 +10,7 @@ import android.view.Surface
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
+import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Lifecycle
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.video_controller_view.view.*
 /**
  *Created by ycb on 2020/1/6 0006
  */
-class MyVideoView @JvmOverloads constructor(
+class VideoView @JvmOverloads constructor(
     private val activity: AppCompatActivity,
     private val bundle: Bundle
 ) : FrameLayout(activity), View.OnClickListener, CompoundButton.OnCheckedChangeListener,
@@ -40,7 +41,7 @@ class MyVideoView @JvmOverloads constructor(
 
   private lateinit var duration: String
 
-  private val orientationDetector = MyOrientationDetector(activity)
+  private val orientationDetector = OrientationDetector(activity)
   var rotation = activity.windowManager.defaultDisplay.rotation
 
   private val portraitHeight = (resources.displayMetrics.density * 210f).toInt()
@@ -137,13 +138,10 @@ class MyVideoView @JvmOverloads constructor(
   }
 
   fun onBackPressed(): Boolean {
-    val rotation = activity.windowManager.defaultDisplay.rotation
-    return if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) {
+    return if (orientationDetector.isWideScreen) {
       activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
       true
-    } else {
-      false
-    }
+    } else false
   }
 
   override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
