@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.address.view.AddressActivity
 import com.cool.eye.func.banner.BannerActivity
+import com.cool.eye.func.dialog.DialogActivity
+import com.cool.eye.func.dialog.toast.ToastActivity
 import com.cool.eye.func.install.DownloadActivity
 import com.cool.eye.func.notify.NotifyActivity
 import com.cool.eye.func.permission.FilePermissionActivity
@@ -76,5 +78,13 @@ class MainActivity : AppCompatActivity() {
 
   fun toVideo(v: View) {
     startActivity(Intent(this, VideoActivity::class.java))
+  }
+
+  fun toDialog(v: View) {
+    startActivity(Intent(this, DialogActivity::class.java))
+  }
+
+  fun toToast(v: View) {
+    startActivity(Intent(this, ToastActivity::class.java))
   }
 }

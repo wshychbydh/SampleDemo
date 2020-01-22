@@ -26,4 +26,16 @@
     <attr name="textSize" format="dimension" />
   </declare-styleable>
 
+  <declare-styleable name="LoadingView">
+    <attr name="lv_arcColor" format="color|reference" />
+    <attr name="lv_bgColor" format="color|reference" />
+    <attr name="lv_showBg" format="boolean" />
+    <attr name="lv_strokeWidth" format="dimension" />
+    <attr name="lv_padding" format="dimension" />
+    <attr name="lv_margin" format="dimension" />
+    <attr name="lv_logo" format="reference" />
+    <attr name="lv_speed" format="float" />
+    <attr name="lv_circle" format="boolean" />
+  </declare-styleable>
+
 </resources>

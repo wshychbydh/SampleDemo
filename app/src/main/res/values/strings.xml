@@ -2,4 +2,6 @@
   <string name="app_name">Func</string>
 
   <string name="cancel">Cancel</string>
+
+  <string name="loading">Loading…</string>
 </resources>

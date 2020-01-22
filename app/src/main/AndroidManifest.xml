@@ -57,6 +57,8 @@
     <activity android:name="com.cool.eye.func.banner.BannerActivity" />
     <activity android:name="com.cool.eye.func.install.DownloadActivity" />
     <activity android:name="com.cool.eye.func.permission.PermissionTestActivity" />
+    <activity android:name="com.cool.eye.func.dialog.toast.ToastActivity" />
+    <activity android:name="com.cool.eye.func.dialog.DialogActivity" />
 
     <provider
       android:name="androidx.core.content.FileProvider"

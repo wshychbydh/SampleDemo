@@ -16,6 +16,16 @@
     <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
   </style>
 
+  <style name="FullDialog" parent="android:Theme.Dialog">
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowBackground">@android:color/white</item>
+    <item name="android:windowAnimationStyle">@style/AnimRightToLeft</item>
+    <item name="android:backgroundDimEnabled">false</item>
+  </style>
+
   <style name="CustomDialog" parent="android:Theme.Dialog">
     <item name="android:windowIsFloating">true</item>
     <item name="android:windowIsTranslucent">false</item>
@@ -38,6 +48,11 @@
     <item name="android:layout_height">45dp</item>
     <item name="android:gravity">center</item>
     <item name="android:background">@drawable/selector_button_white_corner</item>
+  </style>
+
+  <style name="AnimRightToLeft">
+    <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+    <item name="android:windowExitAnimation">@anim/slide_out_left</item>
   </style>
 
   <style name="AnimBottom">
