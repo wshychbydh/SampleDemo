@@ -38,4 +38,48 @@
     <attr name="lv_circle" format="boolean" />
   </declare-styleable>
 
+  <declare-styleable name="ClearAbleEditText">
+    <attr name="clearIconDrawable" format="reference" />
+    <attr name="clearIconPadding" format="dimension" />
+    <attr name="clearIconGravity">
+      <flag name="top" value="0x30" />
+      <flag name="bottom" value="0x50" />
+      <flag name="left" value="0x03" />
+      <flag name="right" value="0x05" />
+      <flag name="center_vertical" value="0x10" />
+      <flag name="center_horizontal" value="0x01" />
+      <flag name="center" value="0x11" />
+    </attr>
+    <attr name="clearIconClipParentPadding" format="boolean" />
+    <attr name="clearIconDivision" format="boolean" />
+    <attr name="clearIconDisabled" format="boolean" />
+  </declare-styleable>
+
+  <declare-styleable name="LimitEditText">
+    <attr name="decimalNum" format="integer" />
+    <attr name="maxValue" format="integer" />
+  </declare-styleable>
+
+  <declare-styleable name="WheelView">
+    <attr name="wv_unitHeight" format="dimension" />
+    <attr name="wv_itemNumber" format="integer" />
+
+    <attr name="wv_normalTextColor" format="color" />
+    <attr name="wv_normalTextSize" format="dimension" />
+    <attr name="wv_selectedTextColor" format="color" />
+    <attr name="wv_selectedTextSize" format="dimension" />
+
+    <attr name="wv_lineColor" format="color" />
+    <attr name="wv_lineHeight" format="dimension" />
+
+    <attr name="wv_maskHeight" format="dimension" />
+    <attr name="wv_noEmpty" format="boolean" />
+    <attr name="wv_isEnable" format="boolean" />
+  </declare-styleable>
+
+  <declare-styleable name="PullToZoomScrollView">
+    <attr name="zoomAble" format="boolean" />
+    <attr name="parallaxAble" format="boolean" />
+    <attr name="rollbackAble" format="boolean" />
+  </declare-styleable>
 </resources>

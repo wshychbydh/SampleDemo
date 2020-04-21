@@ -85,7 +85,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="15dp"
-      android:text="依赖库示例："
+      android:text="功能示例："
       android:textSize="20sp"
       android:textStyle="bold" />
 

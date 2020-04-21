@@ -4,4 +4,6 @@
     <string name="cancel">取消</string>
 
     <string name="loading">加载中…</string>
+  <string name="app_notify_description">notify</string>
+  <string name="choose_to_share">选择分享方式</string>
 </resources>

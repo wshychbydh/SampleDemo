@@ -4,4 +4,6 @@
   <string name="cancel">Cancel</string>
 
   <string name="loading">Loading…</string>
+  <string name="app_notify_description">notify</string>
+  <string name="choose_to_share">Choose To Share</string>
 </resources>
