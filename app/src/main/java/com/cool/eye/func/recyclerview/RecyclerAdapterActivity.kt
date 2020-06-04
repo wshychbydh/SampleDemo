@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cool.eye.demo.R
-import com.eye.cool.adapter.loadmore.ILoadMoreListener
-import com.eye.cool.adapter.loadmore.LoadMoreAdapter
-import com.eye.cool.adapter.loadmore.Loading
-import com.eye.cool.adapter.loadmore.NoMoreData
+import com.eye.cool.adapter.loadmore.*
 import kotlinx.android.synthetic.main.activity_recycler_adapter.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -27,8 +24,8 @@ class RecyclerAdapterActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
     adapter.registerViewHolder(MockData::class.java, MockViewHolder::class.java)
 
     adapter.setDefaultCount(10)
-    adapter.setLoading(Loading("加载更多中..."))
-    adapter.setNoData(NoMoreData("没有更多数据"))
+    adapter.setLoadMore(LoadMore(text = "加载更多中..."))
+    adapter.setNoData(NoMoreData(text = "没有更多数据"))
     adapter.setLoadMoreListener(object : ILoadMoreListener {
       override fun onLoadMore() {
         handler.postDelayed({

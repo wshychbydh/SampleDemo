@@ -27,7 +27,7 @@ class ToastActivity : AppCompatActivity() {
   }
 
   fun showCustomDuration(v: View) {
-    ToastHelper.showToast(this, "自定义Toast", 10000L)
+    ToastHelper.showToast(this, "自定义Toast", 5000L)
   }
 
   fun showCustomView(v: View) {

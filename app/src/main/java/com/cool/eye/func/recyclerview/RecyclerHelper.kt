@@ -43,7 +43,7 @@ object RecyclerHelper {
     val adapter = LoadMoreAdapter()
     adapter.registerViewHolder(Empty::class.java, EmptyViewHolder::class.java)
     adapter.registerViewHolder(NoMoreData::class.java, DefaultNoMoreDataViewHolder::class.java)
-    adapter.registerViewHolder(Loading::class.java, DefaultLoadingViewHolder::class.java)
+    adapter.registerViewHolder(LoadMore::class.java, DefaultLoadMoreViewHolder::class.java)
     adapter.empowerLoadMoreAbility(recyclerView)
     recyclerView.adapter = adapter
     return adapter

@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.empty_view_holder.view.*
 class EmptyViewHolder(itemView: View) : DataViewHolder<Empty>(itemView) {
   override fun updateViewByData(data: Empty) {
     super.updateViewByData(data)
-    if (data.drawableResId > 0) {
-      itemView.textView.setCompoundDrawablesWithIntrinsicBounds(0, data.drawableResId, 0, 0)
+    if (data.drawable != null) {
+      itemView.textView.setCompoundDrawablesWithIntrinsicBounds(null, data.drawable, null, null)
     }
     if (!data.text.isNullOrEmpty()) {
       itemView.textView.text = data.text

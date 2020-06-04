@@ -8,6 +8,9 @@ import com.cool.eye.demo.R
 import com.cool.eye.scan.CaptureActivity
 import com.cool.eye.scan.listener.CaptureListener
 import com.cool.eye.scan.view.CaptureView
+import com.eye.cool.photo.PhotoHelper
+import com.eye.cool.photo.params.ImageParams
+import com.eye.cool.photo.support.OnSelectListener
 import kotlinx.android.synthetic.main.activity_scan.*
 
 class ScanActivity : CaptureActivity(), CaptureListener {
@@ -15,6 +18,19 @@ class ScanActivity : CaptureActivity(), CaptureListener {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_scan)
+
+    imagePicker.setOnClickListener {
+      PhotoHelper(this)
+          .onSelectAlbum(
+              ImageParams.Builder()
+                  .setOnSelectListener(object : OnSelectListener {
+                    override fun onSelect(path: String) {
+                      parseImage(path)
+                    }
+                  })
+                  .build()
+          )
+    }
   }
 
   override fun getCaptureListener(): CaptureListener = this
