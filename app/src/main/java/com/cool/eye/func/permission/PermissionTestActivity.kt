@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.eye.cool.permission.PermissionHelper
+import com.eye.cool.permission.support.Permission
 
 /**
  *Created by ycb on 2019/12/18 0018
@@ -23,7 +24,9 @@ class PermissionTestActivity : AppCompatActivity() {
   fun requestInActivity(v: View) {
     PermissionHelper.Builder(this)
         .permission(android.Manifest.permission.CAMERA)
+        .permissions(Permission.INSTALL_PACKAGE)
         .showRationaleWhenRequest(true)
+        .showInstallRationaleWhenRequest(true)
         .deniedPermissionCallback {
           it.forEach { i ->
             Log.i("permission", "denied permission--->$i")
