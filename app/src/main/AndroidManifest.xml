@@ -39,7 +39,7 @@
     </activity>
     <activity
       android:name="com.cool.eye.func.address.view.AddressActivity"
-      android:windowSoftInputMode="adjustNothing" />
+      android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
     <activity android:name="com.cool.eye.func.notify.NotifyActivity" />
     <activity android:name="com.cool.eye.func.view.trend.TrendActivity" />
 

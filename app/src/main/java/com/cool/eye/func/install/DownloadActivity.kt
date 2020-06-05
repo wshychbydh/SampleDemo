@@ -12,7 +12,9 @@ import com.eye.cool.install.params.DownloadParams
 import com.eye.cool.install.params.Params
 import com.eye.cool.install.params.ProgressParams
 import com.eye.cool.install.params.PromptParams
+import com.eye.cool.install.util.DownloadUtil
 import kotlinx.android.synthetic.main.activity_download.*
+import java.io.File
 
 /**
  *Created by ycb on 2019/11/29 0029
@@ -34,6 +36,7 @@ class DownloadActivity : AppCompatActivity() {
         .setDownloadParams(
             DownloadParams.Builder()
                 .setDownloadUrl(url)
+                .isApkFile(true)
                 .build()
         )
         .setPromptParams(
@@ -53,7 +56,7 @@ class DownloadActivity : AppCompatActivity() {
             .dimAmount(0.6f)
             .gravity(Gravity.CENTER)
             .size((resources.displayMetrics.widthPixels * 3f / 5f).toInt(), 0)
-            .setCoordinate(130, 200)
+            .setCoordinate(80, 200)
             .build())
         .build()
     ).start()
