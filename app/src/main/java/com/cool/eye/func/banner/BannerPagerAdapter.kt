@@ -33,7 +33,7 @@ class BannerPagerAdapter(private val pages: List<Any>) : androidx.viewpager.widg
     fl.addView(tv)
     tv.textSize = 30f
     tv.setTextColor(Color.BLACK)
-    tv.text = "Position:$position"
+    tv.text = "ViewPager-->Position:$position"
     container.addView(fl)
     fl.setOnClickListener {
       Toast.makeText(container.context, "Click $position", Toast.LENGTH_SHORT).show()
