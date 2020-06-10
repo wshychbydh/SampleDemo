@@ -52,7 +52,9 @@ dependencies {
     implementation 'com.github.wshychbydh:scan:1.2.7'
     implementation 'com.github.wshychbydh:book:1.0.2'
     implementation 'com.github.wshychbydh:recyclerAdapter:1.1.4'
-  //  implementation project(':library')
+
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+   // implementation project(':library')
 }
 repositories {
     mavenCentral()

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.message_loading_dialog.view.*
 /**
  *Created by ycb on 2018/12/6 0006
  */
-object LoadingHelper : LifecycleObserver {
+object LoadingHelper {
 
   @Volatile
   private var loadingDialog: BaseDialog? = null
