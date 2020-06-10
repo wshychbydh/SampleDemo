@@ -15,7 +15,6 @@ import kotlin.random.Random
 
 /**
  *Created by ycb on 2019/11/14 0014
- * 3D画廊实现方案@See https://github.com/angcyo/ViewPagerLayoutManager
  */
 class BannerActivity : AppCompatActivity() {
 

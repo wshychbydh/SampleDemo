@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.address.view.AddressActivity
 import com.cool.eye.func.banner.BannerActivity
+import com.cool.eye.func.banner.GalleryActivity
 import com.cool.eye.func.dialog.DialogActivity
 import com.cool.eye.func.dialog.toast.ToastActivity
 import com.cool.eye.func.install.DownloadActivity
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
 
   fun toBanner(view: View) {
     startActivity(Intent(this, BannerActivity::class.java))
+  }
+
+  fun toGallery(view: View) {
+    startActivity(Intent(this, GalleryActivity::class.java))
   }
 
   fun toTheme(view: View) {

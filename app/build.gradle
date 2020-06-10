@@ -54,8 +54,10 @@ dependencies {
     implementation 'com.github.wshychbydh:recyclerAdapter:1.1.4'
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
    // implementation project(':library')
 }
 repositories {
+    jcenter()
     mavenCentral()
 }
