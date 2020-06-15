@@ -4,7 +4,7 @@
 
 1、6.0以上动态获取权限           @link(com.github.wshychbydh:permission)          
 
-2、6.0及以上apk下载及安装        @link(com.github.wshychbydh:install) 
+2、6.0及以上apk下载及安装        @link(com.github.wshychbydh:install)
 
 3、Banner/引导页                 @link(com.github.wshychbydh:banner)   
 
