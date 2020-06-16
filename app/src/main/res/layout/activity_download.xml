@@ -10,8 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
-    android:hint="请输入下载地址"
-    android:text="https://cdnapp.sudiyi.cn/sudiyi_vms/apk/wolaila-2.5.0.269-stable.apk" />
+    android:hint="请输入下载地址" />
 
   <androidx.appcompat.widget.AppCompatButton
     android:layout_width="wrap_content"

@@ -60,6 +60,7 @@
     <activity android:name="com.cool.eye.func.dialog.toast.ToastActivity" />
     <activity android:name="com.cool.eye.func.dialog.DialogActivity" />
     <activity android:name="com.cool.eye.func.banner.GalleryActivity" />
+    <activity android:name="com.cool.eye.func.paging.PagingActivity" />
 
     <provider
       android:name="androidx.core.content.FileProvider"
@@ -68,7 +69,7 @@
       android:grantUriPermissions="true">
       <meta-data
         android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths_2" />
+        android:resource="@xml/file_paths" />
     </provider>
   </application>
 

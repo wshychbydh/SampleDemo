@@ -87,7 +87,7 @@ object Util {
   }
 
   @JvmStatic
-  fun getVersioCode(context: Context): Int? { //获取包管理器
+  fun getVersionCode(context: Context): Int? { //获取包管理器
     val pm = context.packageManager
     //获取包信息
     try {

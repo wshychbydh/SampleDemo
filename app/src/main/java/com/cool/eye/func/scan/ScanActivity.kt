@@ -10,7 +10,6 @@ import com.cool.eye.scan.listener.CaptureListener
 import com.cool.eye.scan.view.CaptureView
 import com.eye.cool.photo.PhotoHelper
 import com.eye.cool.photo.params.ImageParams
-import com.eye.cool.photo.support.OnSelectListener
 import kotlinx.android.synthetic.main.activity_scan.*
 
 class ScanActivity : CaptureActivity(), CaptureListener {
@@ -23,8 +22,8 @@ class ScanActivity : CaptureActivity(), CaptureListener {
       PhotoHelper(this)
           .onSelectAlbum(
               ImageParams.Builder()
-                  .setOnSelectListener(object : OnSelectListener {
-                    override fun onSelect(path: String) {
+                  .setOnSelectListener(object : ImageParams.OnSelectListener {
+                    override suspend fun onSelect(path: String) {
                       parseImage(path)
                     }
                   })
