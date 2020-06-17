@@ -7,32 +7,32 @@ import androidx.lifecycle.Observer
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.cool.eye.func.recyclerview.EmptyViewHolder
+import com.eye.cool.adapter.paging.DefaultDataSourceFactory
 import com.eye.cool.adapter.paging.StateLinearLayoutManager
-import com.eye.cool.adapter.paging.StatePageAdapter
-import com.eye.cool.adapter.support.Empty
+import com.eye.cool.adapter.paging.StatePagingAdapter
+import com.eye.cool.adapter.support.Loading
 
 /**
  * Created by ycb on 2020/6/16 0016
  */
-class PagingAdapter<T> : StatePageAdapter<T>(), LifecycleObserver, SwipeRefreshLayout.OnRefreshListener, Observer<PagedList<T>> {
+class PagingAdapter<T> : StatePagingAdapter<T>(), LifecycleObserver, SwipeRefreshLayout.OnRefreshListener, Observer<PagedList<T>> {
 
   private var refreshLayout: SwipeRefreshLayout? = null
-  private var dataLoader: IDataLoader<T>? = null
+  private var dataLoader: DefaultDataSourceFactory.IDataLoader<T>? = null
   private var lifecycleOwner: LifecycleOwner? = null
 
   fun attachToRefreshView(refreshView: RefreshView) {
     refreshLayout = refreshView.getSwipeRefreshLayout()
     val recyclerView = refreshView.getRecyclerView()
     recyclerView.layoutManager = StateLinearLayoutManager(recyclerView.context)
-    registerStateViewHolder(Empty::class.java, EmptyViewHolder::class.java)
     refreshLayout!!.setOnRefreshListener(this)
     recyclerView.adapter = this
   }
 
-  fun setDataLoader(lifecycleOwner: LifecycleOwner, dataLoader: IDataLoader<T>) {
+  fun setDataLoader(lifecycleOwner: LifecycleOwner, dataLoader: DefaultDataSourceFactory.IDataLoader<T>) {
     this.dataLoader = dataLoader
     this.lifecycleOwner = lifecycleOwner
+    submitStatus(Loading())
     onRefresh()
   }
 
@@ -42,25 +42,17 @@ class PagingAdapter<T> : StatePageAdapter<T>(), LifecycleObserver, SwipeRefreshL
 
   override fun onChanged(it: PagedList<T>?) {
     refreshLayout?.isRefreshing = false
-    if (it.isNullOrEmpty()) {
-      submitStatus(Empty())
-    } else {
-      submitList(it)
-    }
+    submitList(it)
   }
 
   private fun createDataProvider(): LiveData<PagedList<T>>? {
     return LivePagedListBuilder(
-        PageDataSourceFactory(dataLoader ?: return null),
+        DefaultDataSourceFactory(1, dataLoader ?: return null),
         PagedList.Config.Builder()
-            .setPageSize(20)
+            .setPageSize(5)
             .setEnablePlaceholders(true)
-            .setInitialLoadSizeHint(20)
+            .setInitialLoadSizeHint(5)
             .build()
     ).build()
-  }
-
-  interface IDataLoader<T> {
-    fun loadData(page: Int, pageSize: Int): List<T>?
   }
 }

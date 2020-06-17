@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.recyclerview.MockData
+import com.eye.cool.adapter.paging.DefaultDataSourceFactory
 import com.eye.cool.adapter.support.DataViewHolder
 import com.eye.cool.adapter.support.LayoutId
 import kotlinx.android.synthetic.main.activity_paging.*
@@ -15,7 +16,7 @@ import kotlin.random.Random
 /**
  * Created by ycb on 2020/6/16 0016
  */
-class PagingActivity : AppCompatActivity(), PagingAdapter.IDataLoader<MockData> {
+class PagingActivity : AppCompatActivity(), DefaultDataSourceFactory.IDataLoader<MockData> {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

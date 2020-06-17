@@ -2,14 +2,16 @@ package com.cool.eye.func.recyclerview
 
 import android.os.Bundle
 import android.os.Handler
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.cool.eye.demo.R
 import com.eye.cool.adapter.loadmore.*
+import com.eye.cool.adapter.support.Loading
 import kotlinx.android.synthetic.main.activity_recycler_adapter.*
-import java.util.*
-import kotlin.collections.ArrayList
+import kotlin.random.Random
 
 class RecyclerAdapterActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -18,29 +20,37 @@ class RecyclerAdapterActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_recycler_adapter)
-    adapter = RecyclerHelper.configLoadMoreAdapter(recyclerView, true)
-    recyclerView.layoutManager = LinearLayoutManager(this)
-    recyclerView.adapter = adapter
-    adapter.registerViewHolder(MockData::class.java, MockViewHolder::class.java)
 
-    adapter.setDefaultCount(10)
-    adapter.setLoadMore(LoadMore(text = "加载更多中..."))
-    adapter.setNoData(NoMoreData(text = "没有更多数据"))
-    adapter.setLoadMoreListener(object : ILoadMoreListener {
-      override fun onLoadMore() {
-        handler.postDelayed({
-          adapter.appendData(mockData())
-        }, 2000)
-      }
-    })
+    val drawable = ContextCompat.getDrawable(recyclerView.context, R.drawable.divider_gray)
+    if (drawable != null) {
+      val divider = DividerItemDecoration(recyclerView.context, LinearLayout.VERTICAL)
+      divider.setDrawable(drawable)
+      recyclerView.addItemDecoration(divider)
+    }
+
+    adapter = LoadMoreAdapter.Builder(recyclerView)
+        .registerViewHolder(MockData::class.java, MockViewHolder::class.java)
+        .showNoMoreData(true)
+        .showNoMoreStatusAlways(true)
+        .showLoadMore(true)
+        .setDefaultCount(5)
+        .setLoadMoreListener(object : ILoadMoreListener {
+          override fun onLoadMore() {
+            handler.postDelayed({
+              adapter.appendData(mockData())
+            }, 1000)
+          }
+        })
+        .build()
 
     refreshLayout.setOnRefreshListener(this)
+
+    adapter.updateData(Loading())
 
     onRefresh()
   }
 
   override fun onRefresh() {
-    refreshLayout.isRefreshing = true
     handler.postDelayed({
       adapter.updateData(mockData())
       refreshLayout.isRefreshing = false
@@ -49,12 +59,10 @@ class RecyclerAdapterActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
 
   private val handler = Handler()
 
-  private val random = Random()
-
   private fun mockData(): List<MockData> {
-    val count = random.nextInt(10) + 5
+    val count = Random.nextInt(6) //无穷加载
     val mockData = ArrayList<MockData>()
-    (0..count).forEach {
+    (0 until count).forEach {
       val data = MockData()
       data.title = "title$it"
       data.content = "content$it"
