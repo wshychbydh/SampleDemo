@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SampleDemo.iml" filepath="$PROJECT_DIR$/SampleDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SampleDemo/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/library.iml" group="SampleDemo/library" />
       <module fileurl="file://$PROJECT_DIR$/work-SampleDemo.iml" filepath="$PROJECT_DIR$/work-SampleDemo.iml" group="SampleDemo" />
     </modules>
   </component>

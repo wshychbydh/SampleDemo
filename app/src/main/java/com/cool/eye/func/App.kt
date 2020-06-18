@@ -1,8 +1,14 @@
 package com.cool.eye.func
 
 import android.app.Application
+import com.cool.eye.func.recyclerview.TestEmptyViewHolder
 import com.cool.eye.func.theme.CustomSDCardLoader
 import com.cool.eye.func.theme.ZipSDCardLoader
+import com.eye.cool.adapter.loadmore.DefaultLoadMoreViewHolder
+import com.eye.cool.adapter.loadmore.DefaultNoMoreDataViewHolder
+import com.eye.cool.adapter.loadmore.LoadMore
+import com.eye.cool.adapter.loadmore.NoMoreData
+import com.eye.cool.adapter.support.*
 import skin.support.SkinCompatManager
 import skin.support.app.SkinAppCompatViewInflater
 import skin.support.constraint.app.SkinConstraintViewInflater
@@ -24,5 +30,15 @@ class App : Application() {
         .addStrategy(CustomSDCardLoader())
         .addStrategy(ZipSDCardLoader())
         .loadSkin()
+
+    GlobalConfig
+        .setDefaultCount(5)
+        .showLoadMore(true)
+        .showNoMoreData(true)
+        .showNoMoreStatusAlways(true)
+        .setDefaultEmpty(Empty(), TestEmptyViewHolder::class.java)
+        .setDefaultLoading(Loading(), DefaultLoadingViewHolder::class.java)
+        .setDefaultNoMoreData(NoMoreData(), DefaultNoMoreDataViewHolder::class.java)
+        .setDefaultLoadMore(LoadMore(), DefaultLoadMoreViewHolder::class.java)
   }
 }

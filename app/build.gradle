@@ -9,8 +9,8 @@ android {
         applicationId "com.cool.eye.func"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
     }
     buildTypes {
         release {
@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.github.wshychbydh:install:1.1.2'
     implementation 'com.github.wshychbydh:scan:1.2.7'
     implementation 'com.github.wshychbydh:book:1.0.2'
-    implementation 'com.github.wshychbydh:recyclerAdapter:1.1.7'
+    implementation 'com.github.wshychbydh:recyclerAdapter:1.2.0'
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
