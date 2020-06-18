@@ -50,7 +50,11 @@ class RecyclerAdapterActivity : AppCompatActivity() {
     adapter2 = LoadMoreAdapter.Builder(recyclerView2)
         .registerViewHolder(MockData::class.java, MockViewHolder::class.java)
         .replaceEmptyViewHolder(
-            Empty(text = "替换的空视图"),
+            Empty(
+                drawable = ContextCompat.getDrawable(this, R.mipmap.ic_launcher),
+                text = "替换的空视图",
+                isClickAble = true
+            ),
             DefaultEmptyViewHolder::class.java
         )
         .replaceLoadingViewHolder(
