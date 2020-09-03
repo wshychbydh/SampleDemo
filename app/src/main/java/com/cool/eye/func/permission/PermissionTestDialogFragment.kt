@@ -2,12 +2,15 @@ package com.cool.eye.func.permission
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.appcompat.widget.AppCompatButton
-import com.eye.cool.permission.PermissionHelper
-import com.eye.cool.permission.support.Permission
+import com.cool.eye.func.dialog.toast.ToastHelper
+import com.eye.cool.permission.checker.Request
+import com.eye.cool.permission.checker.permissionForResult
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class PermissionTestDialogFragment : AppCompatDialogFragment(), View.OnClickListener {
   override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -20,19 +23,17 @@ class PermissionTestDialogFragment : AppCompatDialogFragment(), View.OnClickList
   }
 
   override fun onClick(v: View?) {
-    dismissAllowingStateLoss()
-    PermissionHelper.Builder(this)
-        .permissions(Permission.STORAGE)
-        .showRationaleWhenRequest(true)
-        .deniedPermissionCallback {
-          it.forEach { i ->
-            println("TestDialogFragment denied permission--->$i")
-          }
-        }
-        .permissionCallback {
-          Toast.makeText(context, "dialog request 授权$it", Toast.LENGTH_SHORT).show()
-        }
-        .build()
-        .request()
+    GlobalScope.launch {
+      val result = permissionForResult(
+          Request.Builder(this@PermissionTestDialogFragment)
+              .permission(android.Manifest.permission.RECEIVE_SMS)
+              .permission(android.Manifest.permission.READ_SMS)
+              .permission(android.Manifest.permission.SEND_SMS)
+              .showRationaleWhenRequest(true)
+              .build()
+      )
+      Log.i("Denied permission", result.denied?.joinToString(" ; ") ?: "None")
+      ToastHelper.showToast(requireContext(), "授权${result.isSucceed()}")
+    }
   }
 }

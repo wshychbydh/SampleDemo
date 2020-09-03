@@ -8,8 +8,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
-import com.eye.cool.permission.PermissionHelper
+import com.cool.eye.func.dialog.toast.ToastHelper
+import com.eye.cool.permission.PermissionChecker
+import com.eye.cool.permission.checker.Request
 import com.eye.cool.permission.support.Permission
+import kotlinx.coroutines.MainScope
 
 /**
  *Created by ycb on 2019/12/18 0018
@@ -22,28 +25,24 @@ class PermissionTestActivity : AppCompatActivity() {
   }
 
   fun requestInActivity(v: View) {
-    PermissionHelper.Builder(this)
-        .permission(android.Manifest.permission.CAMERA)
-        .permissions(Permission.INSTALL_PACKAGE)
-        .showRationaleWhenRequest(true)
-        .showInstallRationaleWhenRequest(true)
-        .deniedPermissionCallback {
-          it.forEach { i ->
-            Log.i("permission", "denied permission--->$i")
-          }
-        }
-        .permissionCallback {
-          Toast.makeText(this, "授权$it", Toast.LENGTH_SHORT).show()
-        }
-        .build()
-        .request()
+    PermissionChecker(
+        Request.Builder(this)
+            .permission(android.Manifest.permission.CAMERA)
+            .permission(android.Manifest.permission.REQUEST_INSTALL_PACKAGES)
+            .showInstallRationaleWhenRequest(true)
+            .showRationaleWhenRequest(true)
+            .build()
+    ).check(MainScope()) {
+      Log.i("Denied permission", it.denied?.joinToString(" ; ") ?: "None")
+      ToastHelper.showToast(this, "授权${it.isSucceed()}")
+    }
   }
 
   fun requestInFragment(v: View) {
     PermissionTestDialogFragment().show(supportFragmentManager, "test")
   }
 
-  fun requestInContext(v: View) {
+  fun requestInReceiver(v: View) {
     val intentFilter = IntentFilter()
     intentFilter.addAction("permission")
     registerReceiver(PermissionTestReceiver(), intentFilter)
@@ -51,5 +50,9 @@ class PermissionTestActivity : AppCompatActivity() {
     val intent = Intent()
     intent.action = "permission"
     sendBroadcast(intent)
+  }
+
+  fun requestInService(v: View) {
+    startService(Intent(this, PermissionTestService::class.java))
   }
 }

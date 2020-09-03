@@ -16,6 +16,7 @@
   <uses-permission android:name="android.permission.BODY_SENSORS" />
 
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.SEND_SMS" />
 
   <application
     android:name="com.cool.eye.func.App"
@@ -61,6 +62,8 @@
     <activity android:name="com.cool.eye.func.dialog.DialogActivity" />
     <activity android:name="com.cool.eye.func.banner.GalleryActivity" />
     <activity android:name="com.cool.eye.func.paging.PagingActivity" />
+
+    <service android:name="com.cool.eye.func.permission.PermissionTestService" />
 
     <provider
       android:name="androidx.core.content.FileProvider"

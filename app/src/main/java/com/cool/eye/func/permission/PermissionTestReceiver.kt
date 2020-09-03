@@ -1,27 +1,31 @@
 package com.cool.eye.func.permission
 
+import android.Manifest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
+import com.cool.eye.func.dialog.toast.ToastHelper
+import com.eye.cool.permission.PermissionChecker
 import com.eye.cool.permission.PermissionHelper
+import com.eye.cool.permission.checker.Request
 import com.eye.cool.permission.support.Permission
+import kotlinx.coroutines.MainScope
 
-public class PermissionTestReceiver : BroadcastReceiver() {
+class PermissionTestReceiver : BroadcastReceiver() {
   override fun onReceive(context: Context, intent: Intent?) {
     context.unregisterReceiver(this)
-    PermissionHelper.Builder(context)
-        .permissions(Permission.CAMERA)
-        .showRationaleWhenRequest(true)
-        .deniedPermissionCallback {
-          it.forEach { i ->
-            println("receiver denied permission--->$i")
-          }
-        }
-        .permissionCallback {
-          Toast.makeText(context, "receiver 授权$it", Toast.LENGTH_SHORT).show()
-        }
-        .build()
-        .request()
+    PermissionChecker(
+        Request.Builder(context)
+            .permission(Manifest.permission.CAMERA)
+            .permission(Manifest.permission.REQUEST_INSTALL_PACKAGES)
+            .showInstallRationaleWhenRequest(true)
+            .showRationaleWhenRequest(true)
+            .build()
+    ).check(MainScope()) {
+      Log.i("Denied permission", it.denied?.joinToString(" ; ") ?: "None")
+      ToastHelper.showToast(context, "授权${it.isSucceed()}")
+    }
   }
 }

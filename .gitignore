@@ -3,8 +3,13 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+.idea/caches/build_file_checksums.ser
+.idea/codeStyles/Project.xml
+.idea/modules.xml
+.idea/misc.xml
 /.idea
 .DS_Store
 /build
 /captures
 .externalNativeBuild
+/library
