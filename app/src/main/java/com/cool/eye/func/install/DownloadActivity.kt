@@ -93,7 +93,6 @@ class DownloadActivity : AppCompatActivity() {
       return
     }
     DownloadHelper(this, Params.Builder()
-        .setLogTag("test_download")
         .setDownloadParams(
             DownloadParams.Builder()
                 .forceUpdate(true)

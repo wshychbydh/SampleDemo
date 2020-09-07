@@ -10,6 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
+    android:text="https://5878a805eb.95apps.com/a612b7031d7e9b40d862928bfccf941e80955f8f.apk?auth_key=1599211874-0-0-dc84ac1ec3a2cd7bd039905609522a44"
     android:hint="请输入下载地址" />
 
   <androidx.appcompat.widget.AppCompatButton
