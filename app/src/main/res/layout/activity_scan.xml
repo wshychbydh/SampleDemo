@@ -9,14 +9,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
-  <com.cool.eye.scan.view.CaptureView
+  <com.eye.cool.scan.view.CaptureView
     android:id="@+id/captureView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:frameDrawable="@drawable/ic_scan_frame"
-    app:possiblePointColor="#0b8efd"
-    app:scanDuration="1500"
-    app:scannerDrawable="@drawable/ic_scan" />
+    app:scan_duration="1500"
+    app:scan_frame_drawable="@drawable/ic_scan_frame"
+    app:scan_possible_point_color="#0b8efd"
+    app:scan_scanner_drawable="@drawable/ic_scan" />
 
   <com.cool.eye.func.widget.StatedImageView
     android:id="@+id/imagePicker"
@@ -24,7 +24,16 @@
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:srcCompat="@mipmap/ic_launcher" />
+
+  <com.cool.eye.func.widget.StatedImageView
+    android:id="@+id/flashlight"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
     app:srcCompat="@mipmap/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
