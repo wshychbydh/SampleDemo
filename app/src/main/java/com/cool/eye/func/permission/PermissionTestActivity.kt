@@ -5,14 +5,11 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.dialog.toast.ToastHelper
 import com.eye.cool.permission.PermissionChecker
 import com.eye.cool.permission.checker.Request
-import com.eye.cool.permission.support.Permission
-import kotlinx.coroutines.MainScope
 
 /**
  *Created by ycb on 2019/12/18 0018
@@ -32,7 +29,7 @@ class PermissionTestActivity : AppCompatActivity() {
             .showInstallRationaleWhenRequest(true)
             .showRationaleWhenRequest(true)
             .build()
-    ).check(MainScope()) {
+    ).check {
       Log.i("Denied permission", it.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(this, "授权${it.isSucceed()}")
     }

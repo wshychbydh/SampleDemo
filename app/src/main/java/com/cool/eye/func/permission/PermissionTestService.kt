@@ -4,6 +4,7 @@ import android.app.IntentService
 import android.content.Intent
 import android.util.Log
 import com.cool.eye.func.dialog.toast.ToastHelper
+import com.eye.cool.permission.PermissionChecker
 import com.eye.cool.permission.checker.Request
 import com.eye.cool.permission.checker.permissionForResult
 import kotlinx.coroutines.runBlocking
@@ -14,15 +15,14 @@ import kotlinx.coroutines.runBlocking
 class PermissionTestService : IntentService("permission") {
 
   override fun onHandleIntent(intent: Intent?) {
-    println("==onHandleIntent=>")
     runBlocking {
-      println("==runBlocking=>")
-      val result = permissionForResult(
+      val result = PermissionChecker(
           Request.Builder(this@PermissionTestService)
-              .permission(android.Manifest.permission.SEND_SMS)
+              .permission(android.Manifest.permission.READ_SMS) //manifest中未注册，授权不会成功
+              .permission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
               .showRationaleWhenRequest(true)
               .build()
-      )
+      ).check()
       Log.i("Denied permission", result.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(this@PermissionTestService, "授权${result.isSucceed()}")
     }

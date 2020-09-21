@@ -23,7 +23,7 @@ class PermissionTestReceiver : BroadcastReceiver() {
             .showInstallRationaleWhenRequest(true)
             .showRationaleWhenRequest(true)
             .build()
-    ).check(MainScope()) {
+    ).check {
       Log.i("Denied permission", it.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(context, "授权${it.isSucceed()}")
     }

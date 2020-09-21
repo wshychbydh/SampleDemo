@@ -25,12 +25,10 @@ class PermissionTestDialogFragment : AppCompatDialogFragment(), View.OnClickList
   override fun onClick(v: View?) {
     GlobalScope.launch {
       val result = permissionForResult(
-          Request.Builder(this@PermissionTestDialogFragment)
-              .permission(android.Manifest.permission.RECEIVE_SMS)
-              .permission(android.Manifest.permission.READ_SMS)
-              .permission(android.Manifest.permission.SEND_SMS)
-              .showRationaleWhenRequest(true)
-              .build()
+          arrayOf(
+              android.Manifest.permission.READ_SMS,//manifest中未注册，授权不会成功
+              android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+          )
       )
       Log.i("Denied permission", result.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(requireContext(), "授权${result.isSucceed()}")
