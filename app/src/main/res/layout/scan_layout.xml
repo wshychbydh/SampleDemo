@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <SurfaceView
+    android:id="@+id/scanSurfaceView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+  <com.eye.cool.scan.view.CaptureView
+    android:id="@+id/scanCaptureView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:scan_description=""
+    app:scan_duration="2000"
+    app:scan_frame_drawable="@drawable/scan_frame_shape"
+    app:scan_frame_height_ratio="0.4"
+    app:scan_frame_width_ratio="0.6"
+    app:scan_possible_point_color="#0b8efd"
+    app:scan_scanner_drawable="@drawable/scan_scanner_shape"
+    app:scan_text_color="@android:color/white"
+    app:scan_text_offset_x_ratio="0.0"
+    app:scan_text_offset_y_ratio="0.23" />
+
+  <CheckedTextView
+    android:id="@+id/scanFlashlightCtv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal|bottom"
+    android:layout_marginBottom="100dp"
+    android:text="手电筒"
+    android:textColor="@color/scan_checked_selector" />
+
+  <ImageView
+    android:id="@+id/scanAlbumIv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right|top"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="20dp"
+    android:scaleType="center"
+    android:src="@android:drawable/ic_menu_gallery" />
+</FrameLayout>
