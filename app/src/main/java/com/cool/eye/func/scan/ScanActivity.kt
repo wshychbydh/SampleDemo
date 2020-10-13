@@ -2,51 +2,67 @@ package com.cool.eye.func.scan
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.view.SurfaceView
+import android.widget.CompoundButton
 import android.widget.Toast
 import com.cool.eye.demo.R
 import com.eye.cool.photo.PhotoHelper
 import com.eye.cool.photo.params.ImageParams
-import com.eye.cool.scan.CaptureActivity
-import com.eye.cool.scan.listener.CaptureListener
-import com.eye.cool.scan.view.CaptureView
-import kotlinx.android.synthetic.main.activity_scan.*
+import com.eye.cool.scan.decode.DecodeActivity
+import com.eye.cool.scan.decode.DecodeParams
+import com.eye.cool.scan.decode.listener.DecodeListener
+import com.eye.cool.scan.decode.supprot.DecodeException
+import kotlinx.android.synthetic.main.scan_layout.*
 
-class ScanActivity : CaptureActivity(), CaptureListener {
+class ScanActivity : DecodeActivity(), DecodeListener, CompoundButton.OnCheckedChangeListener {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_scan)
+    setContentView(R.layout.scan_layout)
 
-    imagePicker.setOnClickListener {
+    scanAlbumIv.setOnClickListener {
       PhotoHelper(this)
           .onSelectAlbum(
               ImageParams.Builder()
                   .setOnSelectListener(object : ImageParams.OnSelectListener {
                     override suspend fun onSelect(path: String) {
-                      parseImage(path)
+                      runOnUiThread {
+                        parseImage(path)
+                      }
                     }
                   })
                   .build()
           )
     }
 
-    flashlight.setOnClickListener {
-      toggleFlashlight()
+    scanFlashlightCb.setOnCheckedChangeListener(this)
+  }
+
+  override fun getDecodeParams() = DecodeParams.Builder()
+      .captureView(scanCaptureView)
+      .surfaceView(scanSurfaceView)
+      .decodeListener(this)
+      .permissionChecker(this)
+      .scaleBitmap()
+      .build()
+
+  override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+    val result = if (isChecked) {
+      enableFlashlight()
+    } else {
+      disableFlashlight()
+    }
+    if (!result) {
+      scanFlashlightCb.setOnCheckedChangeListener(null)
+      scanFlashlightCb.isChecked = scanFlashlightCb.isChecked
+      scanFlashlightCb.setOnCheckedChangeListener(this)
     }
   }
 
-  override fun getCaptureListener(): CaptureListener = this
-
-  override fun getCaptureView(): CaptureView = captureView
-
-  override fun getSurfaceView(): SurfaceView = surfaceView
-
   override fun onScanSucceed(bitmap: Bitmap, content: String) {
-    ScanResultActivity.launch(this, bitmap, content)
+    ScanResultActivity.launch(this@ScanActivity, bitmap, content)
   }
 
-  override fun onScanFailed(throwable: Throwable) {
-    Toast.makeText(this, throwable.message ?: "扫码失败!", Toast.LENGTH_SHORT).show()
+  override fun onScanFailed(error: DecodeException) {
+    Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
   }
 }

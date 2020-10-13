@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
-  <com.eye.cool.scan.view.CaptureView
+  <com.eye.cool.scan.decode.view.CaptureView
     android:id="@+id/scanCaptureView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,14 +24,14 @@
     app:scan_text_offset_x_ratio="0.0"
     app:scan_text_offset_y_ratio="0.23" />
 
-  <CheckedTextView
-    android:id="@+id/scanFlashlightCtv"
+  <CheckBox
+    android:id="@+id/scanFlashlightCb"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal|bottom"
     android:layout_marginBottom="100dp"
-    android:text="手电筒"
-    android:textColor="@color/scan_checked_selector" />
+    android:button="@drawable/scan_flashlight_selector"
+    android:checked="false" />
 
   <ImageView
     android:id="@+id/scanAlbumIv"

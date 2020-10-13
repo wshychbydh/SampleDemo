@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item android:drawable="@drawable/video_pause_ic" android:state_checked="true" />
-  <item android:drawable="@drawable/video_start_ic" />
+  <item android:drawable="@drawable/scan_flashlight_checked_ic" android:state_checked="true" />
+  <item android:drawable="@drawable/scan_flashlight_checked_ic" android:state_pressed="true" />
+  <item android:drawable="@drawable/scan_flashlight_ic" />
 </selector>
