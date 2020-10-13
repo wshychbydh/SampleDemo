@@ -24,10 +24,8 @@ class ScanActivity : DecodeActivity(), DecodeListener, CompoundButton.OnCheckedC
           .onSelectAlbum(
               ImageParams.Builder()
                   .setOnSelectListener(object : ImageParams.OnSelectListener {
-                    override suspend fun onSelect(path: String) {
-                      runOnUiThread {
-                        parseImage(path)
-                      }
+                    override fun onSelect(path: String) {
+                      parseImage(path)
                     }
                   })
                   .build()

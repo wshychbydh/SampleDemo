@@ -1,6 +1,5 @@
 package com.cool.eye.func.photo
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,16 +9,39 @@ import com.eye.cool.photo.PhotoDialog
 import com.eye.cool.photo.PhotoDialogActivity
 import com.eye.cool.photo.PhotoDialogFragment
 import com.eye.cool.photo.PhotoHelper
+import com.eye.cool.photo.expand.select
 import com.eye.cool.photo.params.ImageParams
 import com.eye.cool.photo.params.Params
 import com.eye.cool.photo.utils.ImageUtil
 import kotlinx.android.synthetic.main.activity_photo.*
+import kotlinx.coroutines.*
 
 class PhotoActivity : AppCompatActivity() {
+
+  private val scope = MainScope()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_photo)
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    scope.cancel()
+  }
+
+  fun selectUseCoroutine(v: View) {
+    scope.launch(Dispatchers.Default) { //测试任意线程调用
+      val result = select(
+          Params.Builder()
+              .requestCameraPermission(true)//manifest中声明了Camera，必须设置为true
+              .build()
+      )
+      val bitmap = ImageUtil.getBitmapFromFile(result)
+      withContext(Dispatchers.Main) {
+        resultIv.setImageBitmap(bitmap)
+      }
+    }
   }
 
   fun selectUsePhotoDialog(v: View) {
@@ -28,10 +50,8 @@ class PhotoActivity : AppCompatActivity() {
             .setImageParams(
                 ImageParams.Builder()
                     .setOnSelectListener(object : ImageParams.OnSelectListener {
-                      override suspend fun onSelect(path: String) {
-                        loadImage(path) {
-                          resultIv.setImageBitmap(it)
-                        }
+                      override fun onSelect(path: String) {
+                        loadImage(path)
                       }
                     })
                     .build()
@@ -56,10 +76,8 @@ class PhotoActivity : AppCompatActivity() {
         ImageParams.Builder()
             .setCutAble(false)
             .setOnSelectListener(object : ImageParams.OnSelectListener {
-              override suspend fun onSelect(path: String) {
-                loadImage(path) {
-                  resultIv.setImageBitmap(it)
-                }
+              override fun onSelect(path: String) {
+                loadImage(path)
               }
             })
             .build(),
@@ -73,10 +91,8 @@ class PhotoActivity : AppCompatActivity() {
     val imageParams = ImageParams.Builder()
         .setCutAble(false)
         .setOnSelectListener(object : ImageParams.OnSelectListener {
-          override suspend fun onSelect(path: String) {
-            loadImage(path) {
-              resultIv.setImageBitmap(it)
-            }
+          override fun onSelect(path: String) {
+            loadImage(path)
           }
         })
         .build()
@@ -92,10 +108,8 @@ class PhotoActivity : AppCompatActivity() {
     PhotoDialogActivity
         .setImageParams(ImageParams.Builder()
             .setOnSelectListener(object : ImageParams.OnSelectListener {
-              override suspend fun onSelect(path: String) {
-                loadImage(path) {
-                  resultIv.setImageBitmap(it)
-                }
+              override fun onSelect(path: String) {
+                loadImage(path)
               }
             })
             .build())
@@ -105,7 +119,10 @@ class PhotoActivity : AppCompatActivity() {
 
 
   //only for test
-  private suspend fun loadImage(path: String, callback: (Bitmap) -> Unit) {
-    ImageUtil.getBitmapFromFile(path, callback = callback)
+  private fun loadImage(path: String) {
+    scope.launch {
+      val bitmap = withContext(Dispatchers.Default) { ImageUtil.getBitmapFromFile(path) }
+      resultIv.setImageBitmap(bitmap)
+    }
   }
 }
