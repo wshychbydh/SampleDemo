@@ -26,7 +26,7 @@ class PermissionTestDialogFragment : AppCompatDialogFragment(), View.OnClickList
     GlobalScope.launch {
       val result = permissionForResult(
           arrayOf(
-              android.Manifest.permission.READ_SMS,//manifest中未注册，授权不会成功
+             // android.Manifest.permission.READ_SMS,//manifest中未注册，授权不会成功
               android.Manifest.permission.WRITE_EXTERNAL_STORAGE
           )
       )

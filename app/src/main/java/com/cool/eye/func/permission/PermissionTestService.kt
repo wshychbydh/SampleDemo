@@ -18,7 +18,7 @@ class PermissionTestService : IntentService("permission") {
     runBlocking {
       val result = PermissionChecker(
           Request.Builder(this@PermissionTestService)
-              .permission(android.Manifest.permission.READ_SMS) //manifest中未注册，授权不会成功
+             // .permission(android.Manifest.permission.READ_SMS) //manifest中未注册，授权不会成功
               .permission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
               .showRationaleWhenRequest(true)
               .build()

@@ -26,8 +26,8 @@ class PermissionTestActivity : AppCompatActivity() {
         Request.Builder(this)
             .permission(android.Manifest.permission.CAMERA)
             .permission(android.Manifest.permission.REQUEST_INSTALL_PACKAGES)
-            .showInstallRationaleWhenRequest(true)
-            .showRationaleWhenRequest(true)
+            .showInstallRationaleWhenRequest(false)
+            .showRationaleWhenRequest(false)
             .build()
     ).check {
       Log.i("Denied permission", it.denied?.joinToString(" ; ") ?: "None")
