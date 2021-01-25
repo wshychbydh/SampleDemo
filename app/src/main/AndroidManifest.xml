@@ -18,6 +18,8 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.FLASHLIGHT" />
 
+  <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
   <application
     android:name="com.cool.eye.func.App"
     android:allowBackup="true"
@@ -62,6 +64,7 @@
     <activity android:name="com.cool.eye.func.dialog.DialogActivity" />
     <activity android:name="com.cool.eye.func.banner.GalleryActivity" />
     <activity android:name="com.cool.eye.func.paging.PagingActivity" />
+    <activity android:name="com.cool.eye.func.paging2.Paging2Activity" />
 
     <service android:name="com.cool.eye.func.permission.PermissionTestService" />
 

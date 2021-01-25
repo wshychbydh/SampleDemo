@@ -20,11 +20,12 @@ class PermissionTestService : IntentService("permission") {
           Request.Builder(this@PermissionTestService)
              // .permission(android.Manifest.permission.READ_SMS) //manifest中未注册，授权不会成功
               .permission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+              .requestInstallPackages()
               .showRationaleWhenRequest(true)
               .build()
       ).check()
-      Log.i("Denied permission", result.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(this@PermissionTestService, "授权${result.isSucceed()}")
+      Log.i("Denied permission", "未授权权限-->${result.toDeniedText(this@PermissionTestService)}")
     }
   }
 }

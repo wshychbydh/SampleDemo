@@ -14,6 +14,7 @@ import com.cool.eye.func.dialog.toast.ToastActivity
 import com.cool.eye.func.install.DownloadActivity
 import com.cool.eye.func.notify.NotifyActivity
 import com.cool.eye.func.paging.PagingActivity
+import com.cool.eye.func.paging2.Paging2Activity
 import com.cool.eye.func.permission.FilePermissionActivity
 import com.cool.eye.func.permission.PermissionTestActivity
 import com.cool.eye.func.photo.PhotoActivity
@@ -77,6 +78,10 @@ class MainActivity : AppCompatActivity() {
 
   fun toPaging(v: View) {
     startActivity(Intent(this, PagingActivity::class.java))
+  }
+
+  fun toPaging2(v: View) {
+    startActivity(Intent(this, Paging2Activity::class.java))
   }
 
   fun toAdapter(v: View) {

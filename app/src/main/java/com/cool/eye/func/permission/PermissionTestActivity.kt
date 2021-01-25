@@ -24,14 +24,15 @@ class PermissionTestActivity : AppCompatActivity() {
   fun requestInActivity(v: View) {
     PermissionChecker(
         Request.Builder(this)
-            .permission(android.Manifest.permission.CAMERA)
-            .permission(android.Manifest.permission.REQUEST_INSTALL_PACKAGES)
+            .permission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
             .showInstallRationaleWhenRequest(false)
             .showRationaleWhenRequest(false)
+            .requestManageExternalStorage()
             .build()
     ).check {
-      Log.i("Denied permission", it.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(this, "授权${it.isSucceed()}")
+      Log.i("Denied permission", "未授权权限-->${it.toDeniedText(this)}")
     }
   }
 

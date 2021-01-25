@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-SampleDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-SampleDemo.iml" group="SampleDemo" />
-      <module fileurl="file://$PROJECT_DIR$/SampleDemo.iml" filepath="$PROJECT_DIR$/SampleDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SampleDemo-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SampleDemo-app.iml" group="SampleDemo/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SampleDemo/app" />
-      <module fileurl="file://$PROJECT_DIR$/work-SampleDemo.iml" filepath="$PROJECT_DIR$/work-SampleDemo.iml" group="SampleDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidStudioProjects.SampleDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidStudioProjects.SampleDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SampleDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SampleDemo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/SampleDemo.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/SampleDemo.library.iml" />
     </modules>
   </component>
 </project>

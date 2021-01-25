@@ -30,8 +30,8 @@ class PermissionTestDialogFragment : AppCompatDialogFragment(), View.OnClickList
               android.Manifest.permission.WRITE_EXTERNAL_STORAGE
           )
       )
-      Log.i("Denied permission", result.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(requireContext(), "授权${result.isSucceed()}")
+      Log.i("Denied permission", "未授权权限-->${result.toDeniedText(requireContext())}")
     }
   }
 }

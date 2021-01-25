@@ -82,6 +82,13 @@
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="toPaging2"
+        android:text="分页2（Paging2）"
+        android:textAllCaps="false" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="toAdapter"
         android:text="通用适配器（recyclerAdapter）"
         android:textAllCaps="false" />

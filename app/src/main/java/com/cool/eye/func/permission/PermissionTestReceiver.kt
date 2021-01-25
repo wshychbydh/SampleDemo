@@ -19,13 +19,13 @@ class PermissionTestReceiver : BroadcastReceiver() {
     PermissionChecker(
         Request.Builder(context)
             .permission(Manifest.permission.CAMERA)
-            .permission(Manifest.permission.REQUEST_INSTALL_PACKAGES)
+            .requestInstallPackages()
             .showInstallRationaleWhenRequest(true)
             .showRationaleWhenRequest(true)
             .build()
     ).check {
-      Log.i("Denied permission", it.denied?.joinToString(" ; ") ?: "None")
       ToastHelper.showToast(context, "授权${it.isSucceed()}")
+      Log.i("Denied permission", "未授权权限-->${it.toDeniedText(context)}")
     }
   }
 }
