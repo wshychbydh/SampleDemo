@@ -6,7 +6,7 @@ import android.widget.CompoundButton
 import android.widget.Toast
 import com.cool.eye.demo.R
 import com.eye.cool.photo.PhotoHelper
-import com.eye.cool.photo.params.ImageParams
+import com.eye.cool.photo.params.Params
 import com.eye.cool.scan.decode.DecodeActivity
 import com.eye.cool.scan.decode.DecodeParams
 import com.eye.cool.scan.decode.listener.DecodeListener
@@ -21,15 +21,11 @@ class ScanActivity : DecodeActivity(), DecodeListener, CompoundButton.OnCheckedC
 
     scanAlbumIv.setOnClickListener {
       PhotoHelper(this)
-          .onSelectAlbum(
-              ImageParams.Builder()
-                  .setOnSelectListener(object : ImageParams.OnSelectListener {
-                    override fun onSelect(path: String) {
-                      parseImage(path)
-                    }
-                  })
-                  .build()
-          )
+          .onSelectAlbum(object : Params.OnSelectListener {
+            override fun onSelect(path: String) {
+              parseImage(path)
+            }
+          })
     }
 
     scanFlashlightCb.setOnCheckedChangeListener(this)

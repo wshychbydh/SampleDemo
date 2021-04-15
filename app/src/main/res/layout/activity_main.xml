@@ -52,10 +52,11 @@
         android:textAllCaps="false" />
 
       <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/toPhotoViewBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toPhotoView"
-        android:text="拍照（photo）"
+        android:text="相册/拍照（photo）"
         android:textAllCaps="false" />
 
       <androidx.appcompat.widget.AppCompatButton

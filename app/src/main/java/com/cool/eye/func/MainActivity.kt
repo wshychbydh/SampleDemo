@@ -24,12 +24,14 @@ import com.cool.eye.func.task.TaskActivity
 import com.cool.eye.func.theme.ThemeActivity
 import com.cool.eye.func.video.VideoActivity
 import com.cool.eye.func.view.trend.TrendActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+    toPhotoViewBtn.setOnClickListener { toPhotoView(it) }
   }
 
   fun toFilePermission(view: View) {

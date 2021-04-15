@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
+import com.cool.eye.func.dialog.toast.ToastHelper
 import com.eye.cool.permission.PermissionHelper
 import com.eye.cool.photo.PhotoDialog
 import com.eye.cool.photo.PhotoDialogActivity
 import com.eye.cool.photo.PhotoDialogFragment
 import com.eye.cool.photo.PhotoHelper
-import com.eye.cool.photo.expand.select
+import com.eye.cool.photo.expand.Photo.select
 import com.eye.cool.photo.params.ImageParams
 import com.eye.cool.photo.params.Params
+import com.eye.cool.photo.support.Action
 import com.eye.cool.photo.utils.ImageUtil
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_photo.*
 import kotlinx.coroutines.*
 
@@ -23,6 +26,7 @@ class PhotoActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_photo)
+    selectUseCoroutineBtn.setOnClickListener { selectUseCoroutine(it) }
   }
 
   override fun onDestroy() {
@@ -33,9 +37,17 @@ class PhotoActivity : AppCompatActivity() {
   fun selectUseCoroutine(v: View) {
     scope.launch(Dispatchers.Default) { //测试任意线程调用
       val result = select(
-          Params.Builder()
-              .requestCameraPermission(true)//manifest中声明了Camera，必须设置为true
-              .build()
+          this@PhotoActivity,
+          imageParams = ImageParams.Builder().cutAble(true).build(),
+          requestCameraPermission = true, //manifest中声明了Camera，必须设置为true
+          onActionClickListener = object : Params.OnActionListener {
+            override fun onAction(action: Int) {
+              if (action == Action.PERMISSION_DENIED) {
+                //如果需要处理具体的权限，可以自定义的权限请求器：params.permissionInvoker
+                ToastHelper.showToast(this@PhotoActivity, "缺少相应权限!")
+              }
+            }
+          }
       )
       val bitmap = ImageUtil.getBitmapFromFile(result)
       withContext(Dispatchers.Main) {
@@ -44,24 +56,21 @@ class PhotoActivity : AppCompatActivity() {
     }
   }
 
+  //fixme 默认不需要存储权限
   fun selectUsePhotoDialog(v: View) {
     PhotoDialog.create(
         Params.Builder()
-            .setImageParams(
-                ImageParams.Builder()
-                    .setOnSelectListener(object : ImageParams.OnSelectListener {
-                      override fun onSelect(path: String) {
-                        loadImage(path)
-                      }
-                    })
-                    .build()
-            )
-            .setPermissionInvoker(object : Params.PermissionInvoker {
+            .onSelectListener(object : Params.OnSelectListener {
+              override fun onSelect(path: String) {
+                loadImage(path)
+              }
+            })
+            .imageParams(ImageParams.Builder().cutAble(false).build())
+            .permissionInvoker(object : Params.PermissionInvoker {
               override fun request(permissions: Array<String>, invoker: (Boolean) -> Unit) {
                 PermissionHelper.Builder(this@PhotoActivity)
                     .permissions(permissions)
                     .permissionCallback(invoker)
-                    .showRationaleWhenRequest(true)
                     .build()
                     .request()
               }
@@ -73,46 +82,44 @@ class PhotoActivity : AppCompatActivity() {
 
   fun selectUsePhotoDialogFragment(v: View) {
     PhotoDialogFragment.create(
-        ImageParams.Builder()
-            .setCutAble(false)
-            .setOnSelectListener(object : ImageParams.OnSelectListener {
+        Params.Builder()
+            .onSelectListener(object : Params.OnSelectListener {
               override fun onSelect(path: String) {
                 loadImage(path)
               }
             })
-            .build(),
-        true,  //manifest中声明了Camera，必须设置为true
-        null
+            .requestCameraPermission(true)  //manifest中声明了Camera，必须设置为true
+            .imageParams(ImageParams.Builder().cutAble(false).build())
+            .build()
     ).show(fragmentManager)
   }
 
   fun selectUsePhotoHelper(v: View) {
     val helper = PhotoHelper(this)
     val imageParams = ImageParams.Builder()
-        .setCutAble(false)
-        .setOnSelectListener(object : ImageParams.OnSelectListener {
-          override fun onSelect(path: String) {
-            loadImage(path)
-          }
-        })
+        .cutAble(false)
         .build()
+    val onSelectListener = object : Params.OnSelectListener {
+      override fun onSelect(path: String) {
+        loadImage(path)
+      }
+    }
     if (v?.id == R.id.picker_image) {
-      helper.onSelectAlbum(imageParams)
+      helper.onSelectAlbum(onSelectListener, imageParams)
     } else if (v?.id == R.id.take_photo) {
       //manifest中声明了Camera，必须设置为true
-      helper.onTakePhoto(imageParams, true)
+      helper.onTakePhoto(onSelectListener, imageParams, true)
     }
   }
 
   fun selectUsePhotoActivity(v: View) {
     PhotoDialogActivity
-        .setImageParams(ImageParams.Builder()
-            .setOnSelectListener(object : ImageParams.OnSelectListener {
-              override fun onSelect(path: String) {
-                loadImage(path)
-              }
-            })
-            .build())
+        .onSelectListener(object : Params.OnSelectListener {
+          override fun onSelect(path: String) {
+            loadImage(path)
+          }
+        })
+        .imageParams(ImageParams.Builder().cutAble(false).build())
         .requestCameraPermission(true) //manifest中声明了Camera，必须设置为true
         .show(this)
   }
