@@ -56,7 +56,6 @@ class PhotoActivity : AppCompatActivity() {
     }
   }
 
-  //fixme 默认不需要存储权限
   fun selectUsePhotoDialog(v: View) {
     PhotoDialog.create(
         Params.Builder()

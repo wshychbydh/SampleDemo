@@ -27,11 +27,14 @@ class DownloadActivity : AppCompatActivity() {
       Toast.makeText(this, "下载地址不正确", Toast.LENGTH_SHORT).show()
       return
     }
-    DownloadHelper(this, Params.Builder()
-        .setNotifyParams(
-            NotifyParams.Builder()
-                .build()
-        )
+    val builder = Params.Builder()
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+      builder.setNotifyParams(
+          NotifyParams.Builder()
+              .build()
+      )
+    }
+    builder
         .setFileParams(
             FileParams
                 .Builder()
@@ -64,8 +67,8 @@ class DownloadActivity : AppCompatActivity() {
                 .size((resources.displayMetrics.widthPixels * 3f / 5f).toInt(), 0)
                 .setCoordinate(80, 200)
                 .build())
-        .build()
-    ).start()
+
+    DownloadHelper(this, builder.build()).start()
   }
 
   fun installOffline(view: View) {

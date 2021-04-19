@@ -1,5 +1,6 @@
 package com.cool.eye.func.banner;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
@@ -58,6 +59,7 @@ public class RPagerSnapHelper extends PagerSnapHelper {
     return this;
   }
 
+  @SuppressLint("WrongConstant")
   @Override
   public void attachToRecyclerView(@Nullable RecyclerView recyclerView)
       throws IllegalStateException {

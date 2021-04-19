@@ -4,11 +4,13 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.text.InputType
 import android.util.AttributeSet
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.cool.eye.demo.R
 

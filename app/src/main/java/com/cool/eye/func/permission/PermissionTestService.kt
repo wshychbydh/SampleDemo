@@ -6,7 +6,6 @@ import android.util.Log
 import com.cool.eye.func.dialog.toast.ToastHelper
 import com.eye.cool.permission.PermissionChecker
 import com.eye.cool.permission.checker.Request
-import com.eye.cool.permission.checker.permissionForResult
 import kotlinx.coroutines.runBlocking
 
 /**

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.cool.eye.demo.R
 import com.eye.cool.permission.PermissionHelper
-import com.eye.cool.permission.support.Permission
+import com.eye.cool.permission.support.PermissionGroup
 import kotlinx.android.synthetic.main.activity_theme.*
 import skin.support.SkinCompatManager
 import skin.support.content.res.SkinCompatUserThemeManager
@@ -26,7 +26,7 @@ class ThemeActivity : AppCompatActivity() {
     setContentView(R.layout.activity_theme)
 
     PermissionHelper.Builder(this)
-        .permissions(Permission.STORAGE)
+        .permissions(PermissionGroup.STORAGE)
         .build()
         .request()
   }

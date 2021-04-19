@@ -7,8 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.appcompat.widget.AppCompatButton
 import com.cool.eye.func.dialog.toast.ToastHelper
-import com.eye.cool.permission.checker.Request
-import com.eye.cool.permission.checker.permissionForResult
+import com.eye.cool.permission.Permission.requestForResult
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -24,9 +23,10 @@ class PermissionTestDialogFragment : AppCompatDialogFragment(), View.OnClickList
 
   override fun onClick(v: View?) {
     GlobalScope.launch {
-      val result = permissionForResult(
+      val result = requestForResult(
+          this@PermissionTestDialogFragment,
           arrayOf(
-             // android.Manifest.permission.READ_SMS,//manifest中未注册，授权不会成功
+              // android.Manifest.permission.READ_SMS,//manifest中未注册，授权不会成功
               android.Manifest.permission.WRITE_EXTERNAL_STORAGE
           )
       )
