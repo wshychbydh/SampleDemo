@@ -1,4 +1,4 @@
-package com.cool.eye.feditunc.widget.image;
+package com.cool.eye.func.widget.image;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
