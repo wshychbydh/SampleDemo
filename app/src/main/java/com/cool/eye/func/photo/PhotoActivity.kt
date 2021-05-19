@@ -38,9 +38,9 @@ class PhotoActivity : AppCompatActivity() {
     scope.launch(Dispatchers.Default) { //测试任意线程调用
       val result = select(
           this@PhotoActivity,
-          imageParams = ImageParams.Builder().cutAble(true).build(),
+          imageParams = ImageParams.build { cutAble = true },
           requestCameraPermission = true, //manifest中声明了Camera，必须设置为true
-          onActionClickListener = object : Params.OnActionListener {
+          onActionListener = object : Params.OnActionListener {
             override fun onAction(action: Int) {
               if (action == Action.PERMISSION_DENIED) {
                 //如果需要处理具体的权限，可以自定义的权限请求器：params.permissionInvoker
@@ -58,46 +58,44 @@ class PhotoActivity : AppCompatActivity() {
 
   fun selectUsePhotoDialog(v: View) {
     PhotoDialog.create(
-        Params.Builder()
-            .onSelectListener(object : Params.OnSelectListener {
-              override fun onSelect(path: String) {
-                loadImage(path)
-              }
-            })
-            .imageParams(ImageParams.Builder().cutAble(false).build())
-            .permissionInvoker(object : Params.PermissionInvoker {
-              override fun request(permissions: Array<String>, invoker: (Boolean) -> Unit) {
-                PermissionHelper.Builder(this@PhotoActivity)
-                    .permissions(permissions)
-                    .permissionCallback(invoker)
-                    .build()
-                    .request()
-              }
-            })
-            .requestCameraPermission(true) //manifest中声明了Camera，必须设置为true
-            .build()
+        Params.build {
+          onSelectListener = object : Params.OnSelectListener {
+            override fun onSelect(path: String) {
+              loadImage(path)
+            }
+          }
+          imageParams = ImageParams.build { cutAble = false }
+          permissionInvoker = object : Params.PermissionInvoker {
+            override fun request(permissions: Array<String>, invoker: (Boolean) -> Unit) {
+              PermissionHelper.Builder(this@PhotoActivity)
+                  .permissions(permissions)
+                  .permissionCallback(invoker)
+                  .build()
+                  .request()
+            }
+          }
+          requestCameraPermission = true  //manifest中声明了Camera，必须设置为true
+        }
     ).show(supportFragmentManager)
   }
 
   fun selectUsePhotoDialogFragment(v: View) {
     PhotoDialogFragment.create(
-        Params.Builder()
-            .onSelectListener(object : Params.OnSelectListener {
-              override fun onSelect(path: String) {
-                loadImage(path)
-              }
-            })
-            .requestCameraPermission(true)  //manifest中声明了Camera，必须设置为true
-            .imageParams(ImageParams.Builder().cutAble(false).build())
-            .build()
+        Params.build {
+          onSelectListener = object : Params.OnSelectListener {
+            override fun onSelect(path: String) {
+              loadImage(path)
+            }
+          }
+          imageParams = ImageParams.build { cutAble = false }
+          requestCameraPermission = true //manifest中声明了Camera，必须设置为true
+        }
     ).show(fragmentManager)
   }
 
   fun selectUsePhotoHelper(v: View) {
     val helper = PhotoHelper(this)
-    val imageParams = ImageParams.Builder()
-        .cutAble(false)
-        .build()
+    val imageParams = ImageParams.build { cutAble = false }
     val onSelectListener = object : Params.OnSelectListener {
       override fun onSelect(path: String) {
         loadImage(path)
@@ -112,15 +110,16 @@ class PhotoActivity : AppCompatActivity() {
   }
 
   fun selectUsePhotoActivity(v: View) {
-    PhotoDialogActivity
-        .onSelectListener(object : Params.OnSelectListener {
-          override fun onSelect(path: String) {
-            loadImage(path)
-          }
-        })
-        .imageParams(ImageParams.Builder().cutAble(false).build())
-        .requestCameraPermission(true) //manifest中声明了Camera，必须设置为true
-        .show(this)
+    val params = Params.build {
+      onSelectListener = object : Params.OnSelectListener {
+        override fun onSelect(path: String) {
+          loadImage(path)
+        }
+      }
+      imageParams = ImageParams.build { cutAble = false }
+      requestCameraPermission = true
+    }
+    PhotoDialogActivity.show(this, params)
   }
 
 
