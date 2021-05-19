@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
-    android:text="https://5878a805eb.95apps.com/a612b7031d7e9b40d862928bfccf941e80955f8f.apk?auth_key=1599211874-0-0-dc84ac1ec3a2cd7bd039905609522a44"
+    android:text="https://dw74.uptodown.com/dwn/YbRvQ9KkKWO2TLBE8mBeTmwh5bAfoB7ZbpoRhdIa7LhhgunTr9WlqCi6FTpP3EtA9PZwryze18uMwSAlMPJf6mUUM_avj_1N5PxzkaJLA6ygYJpNs_9u-S9t9XU40KUQ/g5bopAtklM2HsXwCFBlKA6Ra0KuiTkzjHJfei8Vd630upVL9Wn_ROVKaotP-7QhTj8jvFfHzba-T4vDg81i3vrEFcxbGGxt-R8H7BBxbS7bEUI4KXUrZseCrEJvwUA8O/G5IKQ78I5Ef7vVYu4iSBD6omaBsQdfeDPsY7dm3afHQfYdhmXuE7MnBKyC8a9Ep7xJxtTDQ61MLIJDivDiL2uQ==/google-chrome-91-0-4472-16.apk"
     android:hint="请输入下载地址" />
 
   <androidx.appcompat.widget.AppCompatButton
