@@ -20,6 +20,7 @@ class DownloadActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_download)
+    urlEt.setText("")
   }
 
   fun installOnline(view: View) {
@@ -70,7 +71,7 @@ class DownloadActivity : AppCompatActivity() {
           windowAnimations = R.style.DialogAnim
           dimAmount = 0.6f
           gravity = Gravity.CENTER
-          size((resources.displayMetrics.widthPixels * 4f / 5f).toInt(), -2)
+          width = (resources.displayMetrics.widthPixels * 4f / 5f).toInt()
           position(80, 200)
         }
       }
