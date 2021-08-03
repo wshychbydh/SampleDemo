@@ -5,7 +5,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.dialog.toast.ToastHelper
-import com.eye.cool.permission.PermissionHelper
+import com.eye.cool.permission.PermissionChecker
+import com.eye.cool.permission.checker.Request
 import com.eye.cool.photo.PhotoDialog
 import com.eye.cool.photo.PhotoDialogActivity
 import com.eye.cool.photo.PhotoDialogFragment
@@ -67,11 +68,13 @@ class PhotoActivity : AppCompatActivity() {
           imageParams = ImageParams.build { cutAble = false }
           permissionInvoker = object : Params.PermissionInvoker {
             override fun request(permissions: Array<String>, invoker: (Boolean) -> Unit) {
-              PermissionHelper.Builder(this@PhotoActivity)
-                  .permissions(permissions)
-                  .permissionCallback(invoker)
-                  .build()
-                  .request()
+              PermissionChecker(
+                  Request.Companion.build(this@PhotoActivity) {
+                    permissions(permissions)
+                  }
+              ).check {
+                invoker.invoke(it.isSucceed())
+              }
             }
           }
           requestCameraPermission = true  //manifest中声明了Camera，必须设置为true

@@ -8,7 +8,10 @@ import com.eye.cool.adapter.loadmore.DefaultLoadMoreViewHolder
 import com.eye.cool.adapter.loadmore.DefaultNoMoreDataViewHolder
 import com.eye.cool.adapter.loadmore.LoadMore
 import com.eye.cool.adapter.loadmore.NoMoreData
-import com.eye.cool.adapter.support.*
+import com.eye.cool.adapter.support.DefaultLoadingViewHolder
+import com.eye.cool.adapter.support.Empty
+import com.eye.cool.adapter.support.GlobalConfig
+import com.eye.cool.adapter.support.Loading
 import skin.support.SkinCompatManager
 import skin.support.app.SkinAppCompatViewInflater
 import skin.support.constraint.app.SkinConstraintViewInflater

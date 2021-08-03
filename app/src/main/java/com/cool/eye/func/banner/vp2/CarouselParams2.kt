@@ -153,7 +153,7 @@ class CarouselParams2 private constructor() {
   companion object {
     const val RIGHT_TO_LEFT = 0   // arrow left
     const val LEFT_TO_RIGHT = 1   // arrow right
-    const val DOWN_TO_UP = 1      // arrow up
+    const val DOWN_TO_UP = 0      // arrow up
     const val UP_TO_DOWN = 1      // arrow down
   }
 }

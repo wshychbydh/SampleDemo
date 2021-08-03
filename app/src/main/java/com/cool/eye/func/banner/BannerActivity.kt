@@ -29,18 +29,18 @@ class BannerActivity : AppCompatActivity() {
     setContentView(R.layout.activity_banner)
     viewPager.adapter = adapter1
     indicator.alwaysShownWhenOnlyOne(true)
-    viewPager.params = CarouselParams.Builder()
-        .setIndicator(indicator)
-        .setScrollAble(true)
-        .setInterval(3000)
-        .setScrollDuration(3000)
-        .setReversible(true)
-        .setRecyclable(true)
-        .setAttachLifecycle(lifecycle)
-        .setDirection(CarouselParams.LEFT_TO_RIGHT)
-        .setScrollWhenOne(false)
-        .build()
-
+    val indicatorV = indicator
+    viewPager.params = CarouselParams.build {
+      this.indicator = indicatorV
+      scrollAble = true
+      interval = 3000
+      scrollDuration = 3000
+      recyclable = true
+      recyclable = true
+      attachLifecycle = lifecycle
+      direction = CarouselParams.LEFT_TO_RIGHT
+      scrollWhenOne = false
+    }
     setupBanner2()
     setupGallery()
   }

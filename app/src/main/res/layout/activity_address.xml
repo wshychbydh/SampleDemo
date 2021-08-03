@@ -9,11 +9,16 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <TextView
+    <Button
+      android:id="@+id/backBtn"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:background="@null"
       android:padding="10dp"
-      android:text="返回" />
+      android:text="返回">
+
+      <requestFocus />
+    </Button>
 
     <androidx.appcompat.widget.SearchView
       android:id="@+id/searchView"

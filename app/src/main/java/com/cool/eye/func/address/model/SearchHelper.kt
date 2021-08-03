@@ -25,7 +25,7 @@ class SearchHelper private constructor() {
   private fun initAll() {
     queryList = Collections.synchronizedList(ArrayList<IQuickProvider>())
     popupWindow = ListPopupWindow(context)
-    popupWindow.setAdapter(ArrayAdapter<IQuickProvider>(context, android.R.layout.simple_list_item_1, queryList))
+    popupWindow.setAdapter(ArrayAdapter(context, android.R.layout.simple_list_item_1, queryList))
     popupWindow.anchorView = searchView
     popupWindow.isModal = true
     popupWindow.setOnItemClickListener { _, _, position, _ ->

@@ -26,6 +26,7 @@ class AddressActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_address)
+    backBtn.setOnClickListener { finish() }
     quickView = findViewById(R.id.quickView)
     searchView.isIconified = false
     searchHelper = SearchHelper.Builder()
@@ -42,14 +43,13 @@ class AddressActivity : AppCompatActivity() {
   }
 
   private fun setup() {
-    quickView.setup(QuickViewParams.Builder()
-        .setDataParams(QuickDataParams.Builder()
-            .setData(DataHelper.data)
-            .registerViewHolder(Hot::class.java, HotViewHolder::class.java)
-            .registerViewHolder(Address::class.java, AddressViewHolder::class.java)
-            .build())
-        .build()
-    )
+    quickView.setup(QuickViewParams.Builder(
+        QuickDataParams.build {
+          data = DataHelper.data
+          registerViewHolder(Hot::class.java, HotViewHolder::class.java)
+          registerViewHolder(Address::class.java, AddressViewHolder::class.java)
+        }
+    ).build())
   }
 
   fun search(query: String): List<IQuickProvider> {
