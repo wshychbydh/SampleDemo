@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cool.eye.demo.R
 import com.cool.eye.func.address.view.AddressActivity
+import com.cool.eye.func.animation.AnimationActivity
 import com.cool.eye.func.banner.BannerActivity
 import com.cool.eye.func.banner.GalleryActivity
 import com.cool.eye.func.dialog.DialogActivity
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
   fun toFilePermission(view: View) {
     startActivity(Intent(this, FilePermissionActivity::class.java))
+  }
+
+  fun toAnimation(view: View) {
+    startActivity(Intent(this, AnimationActivity::class.java))
   }
 
   fun toDownloadApk(view: View) {

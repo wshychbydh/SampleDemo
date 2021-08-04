@@ -23,7 +23,7 @@ class FlexBoxLayout @JvmOverloads constructor(
     var heightSize = MeasureSpec.getSize(heightMeasureSpec)
     //测量子View的宽高
     val childCount = childCount
-    var child: View? = null
+    var child: View?
     //子view摆放的起始位置
     var left = paddingLeft
     //一行view中将最大的高度存于此变量，用于子view进行换行时高度的计算
@@ -35,12 +35,11 @@ class FlexBoxLayout @JvmOverloads constructor(
       //测量子View宽高
       measureChild(child, widthMeasureSpec, heightMeasureSpec)
       //两两对比，取得一行中最大的高度
-      if (child.measuredHeight + child.paddingTop + child.paddingBottom
-          > maxHeightInLine) {
+      if (child.measuredHeight + child.paddingTop + child.paddingBottom > maxHeightInLine) {
         maxHeightInLine = child.measuredHeight + child.paddingTop + child.paddingBottom
       }
-      left += child.measuredWidth + dip2px(horizontalSpace.toFloat()) + child.paddingLeft + child
-          .paddingRight
+      left += child.measuredWidth + dip2px(horizontalSpace.toFloat())
+      + child.paddingLeft + child.paddingRight
       if (left >= widthSize - paddingRight - paddingLeft) { //换行
         left = paddingLeft
         //累积行的总高度
@@ -50,7 +49,7 @@ class FlexBoxLayout @JvmOverloads constructor(
       }
     }
     //再加上最后一行的高度,因为之前的高度累积条件是换行
-//最后一行没有换行操作，所以高度应该再加上
+    //最后一行没有换行操作，所以高度应该再加上
     allHeight += maxHeightInLine
     if (widthMode != MeasureSpec.EXACTLY) {
       widthSize = screenWidth //如果没有指定宽，则默认为屏幕宽
@@ -74,7 +73,7 @@ class FlexBoxLayout @JvmOverloads constructor(
       while (i < len) {
         child = getChildAt(i)
         //从第二个子view开始算起
-//因为第一个子view默认从头开始摆放
+        //因为第一个子view默认从头开始摆放
         if (i > 0) { //两两对比，取得一行中最大的高度
           if (getChildAt(i - 1).measuredHeight > maxHeightInLine) {
             maxHeightInLine = getChildAt(i - 1).measuredHeight
@@ -83,7 +82,7 @@ class FlexBoxLayout @JvmOverloads constructor(
           left += getChildAt(i - 1).measuredWidth + dip2px(horizontalSpace.toFloat())
           if (left + child.measuredWidth
               >= width - paddingRight - paddingLeft) { //这一行所有子view相加的宽度大于容器的宽度，需要换行
-//换行的首个子view，起始left应该为0+容器的paddingLeft
+            //换行的首个子view，起始left应该为0+容器的paddingLeft
             left = paddingLeft
             //top的位置为上一行中拥有最大高度的某个View的高度+垂直间距
             top += maxHeightInLine + dip2px(verticalSpace.toFloat())

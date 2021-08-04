@@ -66,6 +66,9 @@
     <activity android:name="com.cool.eye.func.banner.GalleryActivity" />
     <activity android:name="com.cool.eye.func.paging.PagingActivity" />
     <activity android:name="com.cool.eye.func.paging2.Paging2Activity" />
+    <activity android:name="com.cool.eye.func.animation.AnimationActivity" />
+    <activity android:name="com.cool.eye.func.animation.bezier.BezierActivity" />
+    <activity android:name="com.cool.eye.func.animation.keyframe.KeyframeActivity" />
 
     <service android:name="com.cool.eye.func.permission.PermissionTestService" />
 

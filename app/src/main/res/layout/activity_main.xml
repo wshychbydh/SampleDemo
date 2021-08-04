@@ -127,6 +127,12 @@
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="toAnimation"
+        android:text="动画" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="toTrendView"
         android:text="自定义走势图" />
 
