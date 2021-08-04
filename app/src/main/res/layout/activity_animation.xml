@@ -11,11 +11,17 @@
     android:onClick="toBezier"
     android:text="贝塞尔曲线" />
 
-
   <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:onClick="toKeyframe"
     android:text="Frame动画" />
+
+  <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:onClick="toReveal"
+    android:text="过渡动画" />
 </LinearLayout>

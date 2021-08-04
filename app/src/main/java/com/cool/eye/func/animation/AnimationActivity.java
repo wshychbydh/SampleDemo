@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cool.eye.demo.R;
 import com.cool.eye.func.animation.bezier.BezierActivity;
 import com.cool.eye.func.animation.keyframe.KeyframeActivity;
+import com.cool.eye.func.animation.reveal.RevealActivity;
 
 public class AnimationActivity extends AppCompatActivity {
 
@@ -22,5 +23,9 @@ public class AnimationActivity extends AppCompatActivity {
 
   public void toKeyframe(View view) {
     startActivity(new Intent(this, KeyframeActivity.class));
+  }
+
+  public void toReveal(View view) {
+    startActivity(new Intent(this, RevealActivity.class));
   }
 }
