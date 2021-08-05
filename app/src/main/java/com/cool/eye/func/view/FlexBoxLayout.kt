@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 
+
 class FlexBoxLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
@@ -14,6 +15,9 @@ class FlexBoxLayout @JvmOverloads constructor(
   private var horizontalSpace = 0
   private var verticalSpace = 0
 
+  /**
+   * fixme 需要考虑子view的可见性
+   */
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     //确定此容器的宽高
@@ -60,6 +64,9 @@ class FlexBoxLayout @JvmOverloads constructor(
     setMeasuredDimension(widthSize, heightSize)
   }
 
+  /**
+   * fixme 需要考虑子view的可见性
+   */
   override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
     if (changed) { //摆放子view
       var child: View? = null

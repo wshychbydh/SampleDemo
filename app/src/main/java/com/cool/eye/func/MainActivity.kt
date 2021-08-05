@@ -19,6 +19,7 @@ import com.cool.eye.func.paging2.Paging2Activity
 import com.cool.eye.func.permission.FilePermissionActivity
 import com.cool.eye.func.permission.PermissionTestActivity
 import com.cool.eye.func.photo.PhotoActivity
+import com.cool.eye.func.plugin.PluginActivity
 import com.cool.eye.func.recyclerview.RecyclerAdapterActivity
 import com.cool.eye.func.scan.ScanActivity
 import com.cool.eye.func.task.TaskActivity
@@ -37,6 +38,10 @@ class MainActivity : AppCompatActivity() {
 
   fun toFilePermission(view: View) {
     startActivity(Intent(this, FilePermissionActivity::class.java))
+  }
+
+  fun toPlugin(v: View) {
+    startActivity(Intent(this, PluginActivity::class.java))
   }
 
   fun toAnimation(view: View) {

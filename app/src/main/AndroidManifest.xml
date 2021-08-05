@@ -70,6 +70,7 @@
     <activity android:name="com.cool.eye.func.animation.bezier.BezierActivity" />
     <activity android:name="com.cool.eye.func.animation.keyframe.KeyframeActivity" />
     <activity android:name="com.cool.eye.func.animation.reveal.RevealActivity" />
+    <activity android:name="com.cool.eye.func.plugin.PluginActivity" />
 
     <service android:name="com.cool.eye.func.permission.PermissionTestService" />
 

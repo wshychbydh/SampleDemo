@@ -127,6 +127,13 @@
       <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="toPlugin"
+        android:text="动态加载apk"
+        android:visibility="gone" />
+
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="toAnimation"
         android:text="动画" />
 
