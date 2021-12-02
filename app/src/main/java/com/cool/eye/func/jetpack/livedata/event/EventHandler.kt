@@ -1,4 +1,4 @@
-package com.cool.eye.func.jetpack.event
+package com.cool.eye.func.jetpack.livedata.event
 
 /**
  * @author: chuanbo

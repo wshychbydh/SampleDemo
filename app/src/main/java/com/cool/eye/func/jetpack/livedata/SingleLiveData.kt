@@ -1,4 +1,4 @@
-package com.cool.eye.func.jetpack
+package com.cool.eye.func.jetpack.livedata
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
