@@ -13,6 +13,7 @@ import com.cool.eye.func.banner.GalleryActivity
 import com.cool.eye.func.dialog.DialogActivity
 import com.cool.eye.func.dialog.toast.ToastActivity
 import com.cool.eye.func.install.DownloadActivity
+import com.cool.eye.func.mock.MockActivity
 import com.cool.eye.func.notify.NotifyActivity
 import com.cool.eye.func.paging.PagingActivity
 import com.cool.eye.func.paging2.Paging2Activity
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity() {
 
   fun toTheme(view: View) {
     startActivity(Intent(this, ThemeActivity::class.java))
+  }
+
+  fun toMock(view: View) {
+    startActivity(Intent(this, MockActivity::class.java))
   }
 
   fun toPermission(view: View) {

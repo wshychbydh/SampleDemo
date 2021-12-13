@@ -13,10 +13,8 @@
 
   <uses-permission android:name="android.permission.TEST" />
   <uses-permission android:name="android.permission.BODY_SENSORS" />
-
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.FLASHLIGHT" />
-
   <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
   <application
@@ -27,6 +25,7 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name="com.cool.eye.func.mock.MockActivity" />
     <activity android:name="com.cool.eye.func.video.VideoActivity" />
     <activity android:name="com.cool.eye.func.scan.ScanResultActivity" />
     <activity android:name="com.cool.eye.func.scan.ScanActivity" />

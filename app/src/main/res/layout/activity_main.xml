@@ -101,6 +101,12 @@
         android:text="主题（skin）"
         android:textAllCaps="false" />
 
+      <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toMock"
+        android:text="模拟网络请求"
+        android:textAllCaps="false" />
     </LinearLayout>
 
     <TextView
