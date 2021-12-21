@@ -2,21 +2,23 @@
 
 ### 一、依赖库示例：
 
-1、6.0以上动态获取权限           @link(com.github.wshychbydh:permission)          
+1、6.0以上动态获取权限          @link(com.github.wshychbydh:permission)          
 
-2、6.0及以上apk下载及安装        @link(com.github.wshychbydh:install)
+2、6.0及以上apk下载及安装       @link(com.github.wshychbydh:install)
 
 3、Banner/引导页               @link(com.github.wshychbydh:banner)
 
-4、照片选择/拍照功能（含授权）     @link(com.github.wshychbydh:photo)
+4、照片选择/拍照功能（含授权）    @link(com.github.wshychbydh:photo)
 
-5、二维码扫码，生成二维码等相关     @link(com.github.wshychbydh:scan)
+5、二维码扫码，生成二维码等相关   @link(com.github.wshychbydh:scan)
 
-6、常用（如通讯录、地址等）选择器   @link(com.github.wshychbydh:book)
+6、常用（如通讯录、地址等）选择器  @link(com.github.wshychbydh:book)
 
 7、RecyclerView通用适配器       @link(com.github.wshychbydh:recyclerAdapter)
 
 8、主题（一键换肤）              @link(skin.support:skin-support)
+
+9、网络请求数据模拟返回          @link(com.github.wshychbydh:mock)
 
 未完待续...
 

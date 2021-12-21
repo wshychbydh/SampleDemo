@@ -1,7 +1,9 @@
 package com.cool.eye.func.mock
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.cool.eye.demo.R
 import com.cool.eye.mock.MockHelper
@@ -19,6 +21,7 @@ class MockActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_mock)
+    MockHelper.release();
     lifecycleScope.launch(Dispatchers.IO) {
       MockHelper.addMockDataSource(MockImpl)
       MockHelper.enableMock(true)
@@ -30,6 +33,7 @@ class MockActivity : AppCompatActivity() {
       withContext(Dispatchers.Main) {
         trafficTv.text = traffic.toString()
         weatherTv.text = weather.toString()
+        progressBar.visibility = View.GONE
       }
     }
   }

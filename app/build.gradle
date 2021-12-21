@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.github.wshychbydh:scan:1.4.2'
     implementation 'com.github.wshychbydh:book:1.0.3'
     implementation 'com.github.wshychbydh:recyclerAdapter:1.2.2'
-    implementation 'com.github.wshychbydh:Mock:v1.0.0'
+    implementation 'com.github.wshychbydh:mock:1.0.2'
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'

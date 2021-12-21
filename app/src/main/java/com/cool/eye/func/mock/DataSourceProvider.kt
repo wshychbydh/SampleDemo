@@ -3,12 +3,7 @@ package com.cool.eye.func.mock
 import com.google.gson.Gson
 
 /**
- * @Description: 模拟数据包装
- * @Author: 杨川博
- * @Date: 6/15/21
- * @License: Copyright Since 2020 Hive Box Technology. All rights reserved.
- * @Notice: This content is limited to the internal circulation of Hive Box, 
- * and it is prohibited to leak or used for other commercial purposes.
+ * Created by ycb on 6/15/21
  */
 interface DataSourceProvider {
 
